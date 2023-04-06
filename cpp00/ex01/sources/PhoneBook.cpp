@@ -6,7 +6,7 @@
 /*   By: harndt <harndt@student.42sp.org.br>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/04 15:24:27 by harndt            #+#    #+#             */
-/*   Updated: 2023/04/05 18:10:41 by harndt           ###   ########.fr       */
+/*   Updated: 2023/04/06 17:27:27 by harndt           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ std::string	PhoneBook::_get_input(std::string const field)
 void	PhoneBook::_set_contact(Contact contact)
 {
 	if (_index == SIZE)
-		std::cout << "Erro" << std::endl;
+		_index = 1;
 	else
 		_index++;
 	_contacts[_index - 1] = contact;
@@ -112,7 +112,8 @@ void	PhoneBook::_display_contacts(int i) const
  */
 void	PhoneBook::_display_phonebook_footer(void)
 {
-	std::cout << "---" << std::endl;
+	_print_n_times('-', 45);
+	std::cout << std::endl;
 }
 
 void	PhoneBook::_print_n_times(char c, int n)
@@ -131,7 +132,6 @@ void	PhoneBook::prompt_add(void)
 {
 	Contact contact;
 	
-	std::cout << "ADD command" << std::endl;
 	contact.set_first_name(_get_input("First Name"));
 	contact.set_last_name(_get_input("Last Name"));
 	contact.set_nickname(_get_input("Nickname"));
@@ -147,27 +147,21 @@ void	PhoneBook::prompt_add(void)
 void	PhoneBook::prompt_search(void)
 {
 	std::string	input;
-	std::cout << "SEARCH command" << std::endl;
 
 	if (!_index)
 	{
-		std::cout << "Error: No contacts to display." << std::endl;
+		std::cout << "Error: No contacts to display. ADD a contact first" << std::endl;
 		return ;
 	}
-	
 	_display_phonebook_header();
 	for (int i = 0; i <= 7; i++)
 	{
 		_display_contacts(i);
-		_print_n_times('-', 45);
+		_display_phonebook_footer();
 	}
-
-	input = _get_input("\nuse the index to select a contact");
+	input = _get_input("an index to select a contact");
 	if (ft_stoi(input) > 0 && ft_stoi(input) < 9)
-	{
-		std::cout << "index valido\n";
 		_contacts[ft_stoi(input) - 1].display();
-	}
 	else
-		std::cout << "index invalido\n";
+		return ;
 }

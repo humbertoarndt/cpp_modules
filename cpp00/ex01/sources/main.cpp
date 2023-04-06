@@ -6,7 +6,7 @@
 /*   By: harndt <harndt@student.42sp.org.br>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/04 15:22:29 by harndt            #+#    #+#             */
-/*   Updated: 2023/04/05 17:59:14 by harndt           ###   ########.fr       */
+/*   Updated: 2023/04/06 17:32:16 by harndt           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,11 @@ int	main(void)
 	std::string	cmd;
 	PhoneBook	phonebook;
 
-	std::cout << "Starting program" << std::endl;
+	std::cout << " ---------------------" << std::endl;
+	std::cout << "|  ^ ^     Welcome    |" << std::endl;
+	std::cout << "| (O,O)      to       |" << std::endl;
+	std::cout << "| (   )   PhoneBook   |" << std::endl;
+	std::cout << " ---------------------" << std::endl;
 	while (cmd != EXIT)
 	{
 		std::cout << "Please chose one of the following options:" << std::endl;
