@@ -6,7 +6,7 @@
 /*   By: harndt <harndt@student.42sp.org.br>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/04 15:24:33 by harndt            #+#    #+#             */
-/*   Updated: 2023/04/05 18:10:30 by harndt           ###   ########.fr       */
+/*   Updated: 2023/04/10 18:48:18 by harndt           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -146,4 +146,5 @@ void	Contact::display(void)
 	std::cout << "Nickname:\t" << this->_nickname << std::endl;
 	std::cout << "Phone Number:\t" << this->_phoneNumber << std::endl;
 	std::cout << "Darkest Secret:\t" << this->_darkestSecret << std::endl;
+	std::cout << std::endl;
 }

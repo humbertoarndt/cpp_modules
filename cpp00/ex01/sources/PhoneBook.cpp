@@ -6,7 +6,7 @@
 /*   By: harndt <harndt@student.42sp.org.br>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/04 15:24:27 by harndt            #+#    #+#             */
-/*   Updated: 2023/04/06 17:27:27 by harndt           ###   ########.fr       */
+/*   Updated: 2023/04/10 18:46:02 by harndt           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -157,11 +157,16 @@ void	PhoneBook::prompt_search(void)
 	for (int i = 0; i <= 7; i++)
 	{
 		_display_contacts(i);
-		_display_phonebook_footer();
+		_print_n_times('-', 45);
+		if (i == 7)
+			std::cout << std::endl;
 	}
 	input = _get_input("an index to select a contact");
 	if (ft_stoi(input) > 0 && ft_stoi(input) < 9)
 		_contacts[ft_stoi(input) - 1].display();
 	else
+	{
+		std::system("clear");
 		return ;
+	}
 }
