@@ -6,7 +6,7 @@
 #    By: harndt <harndt@student.42sp.org.br>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/04/10 12:12:29 by harndt            #+#    #+#              #
-#    Updated: 2023/04/10 12:14:54 by harndt           ###   ########.fr        #
+#    Updated: 2023/04/10 18:56:44 by harndt           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -38,8 +38,8 @@ EOC			:=	\033[1;0m
 all:		$(NAME)
 			clear
 
-%.o:		%.cpp
-			@$(CC) $(CFLAGS) -l $(HEADERS) -c $< -o $@
+%.o:		%.cpp $(HEADERS)
+			@$(CC) $(CFLAGS) -c $< -o $@
 
 $(NAME):	$(OBJS)
 			@echo "$(WHT)Compiling ACCOUNTS...$(EOC)"
