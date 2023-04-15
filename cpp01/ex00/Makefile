@@ -1,0 +1,64 @@
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    Makefile                                           :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: harndt <harndt@student.42sp.org.br>        +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2023/04/10 12:12:29 by harndt            #+#    #+#              #
+#    Updated: 2023/04/14 14:39:10 by harndt           ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
+
+# ------------------------------------------------------------------------------
+# VARIABLES
+# ------------------------------------------------------------------------------
+
+NAME		:=	zombie
+CC			:=	c++
+CFLAGS		:=	-Wall -Werror -Wextra -std=c++98
+HEADERS		:=	./Zombie.hpp
+SRCS		:=	./main.cpp	./Zombie.cpp	./newZombie.cpp	./randomChump.cpp
+
+OBJS		:=	$(SRCS:.cpp=.o)
+
+# ==============================================================================
+# COLORS
+# ==============================================================================
+
+GREEN		:=	\033[1;32m
+RED			:=	\033[1;31m
+WHT			:=	\033[1;37m
+EOC			:=	\033[1;0m
+
+# ==============================================================================
+# RECIPES
+# ==============================================================================
+
+all:		$(NAME)
+			clear
+
+%.o:		%.cpp $(HEADERS)
+			@$(CC) $(CFLAGS) -c $< -o $@
+
+$(NAME):	$(OBJS)
+			@echo "$(WHT)Compiling ZOMBIE...$(EOC)"
+			@$(CC) $(OBJS) -o $@
+			@echo "$(GREEN)ZOMBIE build completed.$(EOC)"
+
+clean:
+			@echo "$(WHT)Removing .o files...$(EOC)"
+			@rm -f $(OBJS)
+			@echo "$(GREEN)Clean done.$(EOC)"
+
+fclean:		clean
+			@echo "$(WHT)Removing object- and binary -files...$(EOC)"
+			@rm -f $(NAME)
+			@echo "$(GREEN)Fclean done.$(EOC)"
+
+re:			fclean all
+
+test:		all
+			./$(NAME) "humberto doisberto tresBERTO QUATROberto"
+
+.PHONY:		all clean fclean re
