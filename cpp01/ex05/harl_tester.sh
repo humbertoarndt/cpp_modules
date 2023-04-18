@@ -16,14 +16,18 @@ echo -e "\e[1;32mTest 2: INFO\e[0m"
 ./$BIN INFO
 echo
 
-echo -e "\e[1;32mTest 3: No args\e[0m"
+echo -e "\e[1;32mTest 3: WARNING\e[0m"
+./$BIN WARNING
+echo
+
+echo -e "\e[1;32mTest 4: No args\e[0m"
 ./$BIN
 echo
 
-echo -e "\e[1;32mTest 4: Invalid level\e[0m"
+echo -e "\e[1;32mTest 5: Invalid level\e[0m"
 ./$BIN "Humberto"
 echo
 
-echo -e "\e[1;32mTest 5: Too many args\e[0m"
+echo -e "\e[1;32mTest 6: Too many args\e[0m"
 ./$BIN "Humberto" "Doisberto"
 echo
