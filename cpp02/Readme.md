@@ -57,6 +57,16 @@ Foo & Foo::operator= (Foo const &rhs)
 }
 ```  
 
+## References
+
+[Orthodox Canonical Class Form](https://www.francescmm.com/orthodox-canonical-class-form/)  
+[Programming example: Class constructor](https://www.youtube.com/watch?v=voU1oNf6Y6k)  
+[Programming example: Copy assignment operator](https://www.youtube.com/watch?v=6wVG4OJxvww)  
+[Programming example: Class destructor](https://www.youtube.com/watch?v=qDouTB3_s7E)  
+[Programming example: Class copy constructor](https://www.youtube.com/watch?v=rVyx6p3YDLY&t=303s)  
+[Copy Constructor C++](https://www.youtube.com/watch?v=GoEn9UnC0eI)  
+[Copy Assignment Operator Overloading C++](https://www.youtube.com/watch?v=SjU5Y-rY56o)  
+
 # Operator Overloading
 
 ## What is an operator?
@@ -69,11 +79,4 @@ Overloading means given a new meaning, or adding new parameters. In this case it
 
 ## References
 
-[Orthodox Canonical Class Form](https://www.francescmm.com/orthodox-canonical-class-form/)  
-[Programming example: Class constructor](https://www.youtube.com/watch?v=voU1oNf6Y6k)  
-[Programming example: Copy assignment operator](https://www.youtube.com/watch?v=6wVG4OJxvww)  
-[Programming example: Class destructor](https://www.youtube.com/watch?v=qDouTB3_s7E)  
-[Programming example: Class copy constructor](https://www.youtube.com/watch?v=rVyx6p3YDLY&t=303s)  
-[Copy Constructor C++](https://www.youtube.com/watch?v=GoEn9UnC0eI)  
-[Copy Assignment Operator Overloading C++](https://www.youtube.com/watch?v=SjU5Y-rY56o)  
 [OPERATORS and OPERATOR OVERLOADING in C++](https://www.youtube.com/watch?v=mS9755gF66w)
