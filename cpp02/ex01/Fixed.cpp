@@ -6,7 +6,7 @@
 /*   By: harndt <harndt@student.42sp.org.br>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/24 14:39:51 by harndt            #+#    #+#             */
-/*   Updated: 2023/04/24 16:22:30 by harndt           ###   ########.fr       */
+/*   Updated: 2023/04/24 17:01:46 by harndt           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,6 +95,7 @@ int	Fixed::toInt(void) const
 
 std::ostream & operator << (std::ostream & o, Fixed const & i)
 {
+	// Checks if 'i' is zero.
 	if (i.getRawBits() & 0xFF)
 		o << i.toFloat();
 	else

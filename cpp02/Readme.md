@@ -80,3 +80,4 @@ Overloading means given a new meaning, or adding new parameters. In this case it
 ## References
 
 [OPERATORS and OPERATOR OVERLOADING in C++](https://www.youtube.com/watch?v=mS9755gF66w)
+[C++ : What is 0xFF and why is it shifted 24 times?](https://www.youtube.com/watch?v=MncgPn6Nm2I)
