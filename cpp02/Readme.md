@@ -1,13 +1,13 @@
 # Othodox Canonical Class Form
 
-In the C++98 the Othodox Canonical Class Form have four methods that the C++ compiler generates for us:
+In the C++98 the Othodox Canonical Class Form have four methods that the C++ compiler generates for us:  
 
 | Method | Description |
 |---|---|
 | Default Constructor | Constructor is a function that has the same name as the Class with no return type, and its used to initialize an object |
 | Copy Constructor | Copy Constructor is called when a new object is creted from an existing object, as a copy of the existing object |
 | Destructor | Destructor is a function that destroys an object allocated in the memory |
-| Copy Assignment Operator | Copy Assignment Operator is called when an already initialized object is assigned a new value from another existing object |
+| Copy Assignment Operator | Copy Assignment Operator is called when an already initialized object is assigned a new value from another existing object |  
 
 Now on a standart class in C++ should look like the following code:
 
@@ -20,8 +20,8 @@ class Foo
 		~Foo(void);
 		Foo & operator = (Foo const &rhs);
 };
-```
-And the methos implementatios as this:
+```  
+And the methods implementatios as this:
 
 ```c++
 
@@ -55,7 +55,7 @@ Foo & Foo::operator= (Foo const &rhs)
 		// Assign values
 	return *this;
 }
-```
+```  
 
 ## References
 
