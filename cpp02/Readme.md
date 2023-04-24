@@ -57,6 +57,16 @@ Foo & Foo::operator= (Foo const &rhs)
 }
 ```  
 
+# Operator Overloading
+
+## What is an operator?
+
+Operator is a symbol used to perform something, like math operators (+, -, *, /, %), logic operators (&&, ||, ==, !=, <, <=, >, >=), pointer and reference operators (**foo, &foo), or the bit shifthing operators (<<, >>), also new (new Foo()) and delete (delete []). [See more](https://en.cppreference.com/w/cpp/language/operators)
+
+## What is Overloading Operator?
+
+Overloading means given a new meaning, or adding new parameters. In this case it's used to define or change the behavior of an operator in the program. As an example, the exercise 01 asks to overload the insertion operator **<<**.
+
 ## References
 
 [Orthodox Canonical Class Form](https://www.francescmm.com/orthodox-canonical-class-form/)  
@@ -66,3 +76,4 @@ Foo & Foo::operator= (Foo const &rhs)
 [Programming example: Class copy constructor](https://www.youtube.com/watch?v=rVyx6p3YDLY&t=303s)  
 [Copy Constructor C++](https://www.youtube.com/watch?v=GoEn9UnC0eI)  
 [Copy Assignment Operator Overloading C++](https://www.youtube.com/watch?v=SjU5Y-rY56o)  
+[OPERATORS and OPERATOR OVERLOADING in C++](https://www.youtube.com/watch?v=mS9755gF66w)
