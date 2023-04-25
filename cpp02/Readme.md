@@ -75,9 +75,12 @@ Operator is a symbol used to perform something, like math operators (+, -, *, /,
 
 ## What is Overloading Operator?
 
-Overloading means given a new meaning, or adding new parameters. In this case it's used to define or change the behavior of an operator in the program. As an example, the exercise 01 asks to overload the insertion operator **<<**.
+Overloading means to give give a new meaning, or adding new parameters. In this case it's used to define or change the behavior of an operator in the program. In C++ we can make operators work for user-defined classes, as an example, we can overload the operator '+' in a class like String so that we can concatenate two strings by just using '+'.
 
 ## References
 
 [OPERATORS and OPERATOR OVERLOADING in C++](https://www.youtube.com/watch?v=mS9755gF66w)  
-[C++ : What is 0xFF and why is it shifted 24 times?](https://www.youtube.com/watch?v=MncgPn6Nm2I)
+[C++ : What is 0xFF and why is it shifted 24 times?](https://www.youtube.com/watch?v=MncgPn6Nm2I)  
+[Operator Overloading in C++](https://www.geeksforgeeks.org/operator-overloading-cpp/)  
+
+
