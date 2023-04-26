@@ -6,11 +6,13 @@
 /*   By: harndt <harndt@student.42sp.org.br>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/24 14:39:51 by harndt            #+#    #+#             */
-/*   Updated: 2023/04/25 16:56:00 by harndt           ###   ########.fr       */
+/*   Updated: 2023/04/26 14:39:03 by harndt           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Fixed.hpp"
+
+#define SHOW_MSG false
 
 // =============================================================================
 // CONSTRUCTOR & DESTRUCTOR
@@ -18,33 +20,38 @@
 
 Fixed::Fixed(void) : _raw(0)
 {
-	// LOG("Default constructor called");
+	if (SHOW_MSG == true)
+		LOG("Default constructor called");
 	return ;
 }
 
 Fixed::Fixed(const int value) : _raw(value << _fractionBits)
 {
-	// LOG("Int constructor called");
+	if (SHOW_MSG == true)
+		LOG("Int constructor called");
 	return ;
 }
 
 // Since 'value' is float can't bitshift it directly, so 'roundf' must be used.
 Fixed::Fixed(const float value) : _raw(roundf(value * (1 << _fractionBits)))
 {
-	// LOG("Float constructor called");
+	if (SHOW_MSG == true)
+		LOG("Float constructor called");
 	return ;
 }
 
 Fixed::Fixed(Fixed const &src)
 {
-	// LOG("Copy constructor called");
+	if (SHOW_MSG == true)
+		LOG("Copy constructor called");
 	*this = src;
 	return ;
 }
 
 Fixed::~Fixed(void)
 {
-	// LOG("Destructor called");
+	if (SHOW_MSG == true)
+		LOG("Destructor called");
 	return ;
 }
 
@@ -54,7 +61,8 @@ Fixed::~Fixed(void)
 
 Fixed & Fixed::operator= (Fixed const &rhs)
 {
-	// LOG("Copy assignment operator called")
+	if (SHOW_MSG == true)
+		LOG("Copy assignment operator called")
 	if (this != &rhs)
 		_raw = rhs.getRawBits();
 	return *this;
@@ -191,11 +199,21 @@ void	Fixed::setRawBits(int const raw)
 // FUNCTIONS
 // =============================================================================
 
+/**
+ * @brief Converts rawBits into float.
+ * 
+ * @return float rawBits converted as float.
+ */
 float	Fixed::toFloat(void) const
 {
 	return ((float)getRawBits() / (1 << _fractionBits));
 }
 
+/**
+ * @brief Convertes rawBits into int.
+ * 
+ * @return int rawBits converted as int.
+ */
 int	Fixed::toInt(void) const
 {
 	return (getRawBits() >> _fractionBits);

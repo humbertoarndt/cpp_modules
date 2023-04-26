@@ -6,7 +6,7 @@
 /*   By: harndt <harndt@student.42sp.org.br>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/24 14:23:48 by harndt            #+#    #+#             */
-/*   Updated: 2023/04/25 16:52:18 by harndt           ###   ########.fr       */
+/*   Updated: 2023/04/26 14:47:26 by harndt           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ class	Fixed
 		~Fixed(void);
 		
 		Fixed &operator= (Fixed const &rhs);
-		int	getRawBits(void) const;
+		int		getRawBits(void) const;
 		void	setRawBits(int const raw);
 		float	toFloat(void) const;
 		int		toInt(void) const;
