@@ -6,7 +6,7 @@
 #    By: harndt <harndt@student.42sp.org.br>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/04/17 12:28:06 by harndt            #+#    #+#              #
-#    Updated: 2023/04/17 12:29:04 by harndt           ###   ########.fr        #
+#    Updated: 2023/05/01 15:17:22 by harndt           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -42,9 +42,9 @@ all:		$(NAME)
 			@$(CC) $(CFLAGS) -c $< -o $@
 
 $(NAME):	$(OBJS)
-			@echo "$(WHT)Compiling ZOMBIE...$(EOC)"
+			@echo "$(WHT)Compiling HUMAN...$(EOC)"
 			@$(CC) $(OBJS) -o $@
-			@echo "$(GREEN)ZOMBIE build completed.$(EOC)"
+			@echo "$(GREEN)HUMAN build completed.$(EOC)"
 
 clean:
 			@echo "$(WHT)Removing .o files...$(EOC)"

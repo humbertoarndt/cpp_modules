@@ -6,7 +6,7 @@
 /*   By: harndt <harndt@student.42sp.org.br>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/18 14:57:04 by harndt            #+#    #+#             */
-/*   Updated: 2023/04/18 15:59:34 by harndt           ###   ########.fr       */
+/*   Updated: 2023/04/29 15:41:30 by harndt           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,13 +81,10 @@ void	Harl::complain(std::string level)
 	{
 		case (0) :
 			(this->*f[index++])();
-			 // fall through
 		case (1) :
 			(this->*f[index++])();
-			 // fall through
 		case (2) :
 			(this->*f[index++])();
-			 // fall through
 		case (3) :
 			(this->*f[index++])();
 			break ;

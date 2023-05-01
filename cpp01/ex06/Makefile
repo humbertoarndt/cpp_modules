@@ -6,7 +6,7 @@
 #    By: harndt <harndt@student.42sp.org.br>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/04/18 15:38:13 by harndt            #+#    #+#              #
-#    Updated: 2023/04/18 15:49:26 by harndt           ###   ########.fr        #
+#    Updated: 2023/04/29 15:42:40 by harndt           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,7 @@
 # ------------------------------------------------------------------------------
 
 NAME		:=	harlFilter
-CC			:=	c++
+CC			:=	clang++
 CFLAGS		:=	-Wall -Werror -Wextra -std=c++98
 HEADERS		:=	./Harl.hpp
 SRCS		:=	./main.cpp	./Harl.cpp
