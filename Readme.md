@@ -14,11 +14,11 @@ This project is all about learning **Object-Oriented Programming** in C. I'll tr
 
 ## CPP02
 
-### Othodox Canonical Class Form
-### Operator Overload
+### [Othodox Canonical Class Form](https://github.com/humbertoarndt/piscine_cpp/tree/master/cpp02#othodox-canonical-class-form)  
+### [Operator Overload](https://github.com/humbertoarndt/piscine_cpp/tree/master/cpp02#operator-overloading)  
 ### Switch Case
 
 ## CPP03
 
-### Inheritance
-### Private x Protected Members
+### [Inheritance](https://github.com/humbertoarndt/piscine_cpp/tree/master/cpp03#iheritance)  
+### [Private x Protected Members](https://github.com/humbertoarndt/piscine_cpp/tree/master/cpp03#private-x-protected)  
