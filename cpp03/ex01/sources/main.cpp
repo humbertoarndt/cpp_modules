@@ -6,7 +6,7 @@
 /*   By: harndt <harndt@student.42sp.org.br>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/02 09:19:15 by harndt            #+#    #+#             */
-/*   Updated: 2023/05/03 14:16:37 by harndt           ###   ########.fr       */
+/*   Updated: 2023/05/03 15:42:09 by harndt           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,6 @@ int	main(void)
 	LOG(scav1);
 	LOG(scav2);
 
-	LOG(PURPLE << "Calling Destructor" << EOC);
+	LOG(PURPLE << "Calling Destructors" << EOC);
 	return (0);
 }
