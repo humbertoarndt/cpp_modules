@@ -21,7 +21,7 @@ class Foo
 		Foo & operator = (Foo const &rhs);
 };
 ```  
-And the methods implementation as this:
+And the methods implementation look like this:
 
 ```c++
 
