@@ -6,7 +6,7 @@
 /*   By: harndt <harndt@student.42sp.org.br>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/02 09:33:22 by harndt            #+#    #+#             */
-/*   Updated: 2023/05/03 13:14:58 by harndt           ###   ########.fr       */
+/*   Updated: 2023/05/03 15:47:34 by harndt           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,7 +78,7 @@ ClapTrap::ClapTrap(std::string const &name, int hitPoints, int energyPoints, int
 ClapTrap & ClapTrap::operator = (ClapTrap const &rhs)
 {
 	if (SHOW_MSG == true)
-		LOG("ClapTrap Copy Assignment operator called");
+		LOG("ClapTrap Assignment operator called");
 	if (this != &rhs)
 	{
 		setName(rhs.getName());

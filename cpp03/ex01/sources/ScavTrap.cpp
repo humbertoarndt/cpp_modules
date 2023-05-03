@@ -6,7 +6,7 @@
 /*   By: harndt <harndt@student.42sp.org.br>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/02 22:14:36 by harndt            #+#    #+#             */
-/*   Updated: 2023/05/03 13:24:04 by harndt           ###   ########.fr       */
+/*   Updated: 2023/05/03 15:47:20 by harndt           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ ScavTrap::~ScavTrap(void)
 ScavTrap & ScavTrap::operator = (ScavTrap const &rhs)
 {
 	if (SHOW_MSG == true)
-		LOG(WHITE "ScavTrap Copy Assignment operator called" EOC)
+		LOG(WHITE "ScavTrap Assignment operator called" EOC)
 	if (this != &rhs)
 		this->ClapTrap::operator = (rhs);
 	return *this;
