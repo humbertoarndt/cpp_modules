@@ -6,7 +6,7 @@
 /*   By: harndt <harndt@student.42sp.org.br>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/02 09:19:15 by harndt            #+#    #+#             */
-/*   Updated: 2023/05/03 13:33:14 by harndt           ###   ########.fr       */
+/*   Updated: 2023/05/03 14:16:37 by harndt           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,10 @@ int	main(void)
 	LOG(scav1);
 	LOG(scav2);
 
-	LOG(PURPLE << "Repairing Time" << EOC);
+	LOG(PURPLE << "Guard Stance" << EOC);
+	scav2.guardGate();
+
+	LOG(PURPLE << "\nRepairing Time" << EOC);
 	for (int i = 0; i < 3; i++)
 		scav2.beRepaired(20);
 
@@ -46,6 +49,6 @@ int	main(void)
 	LOG(scav1);
 	LOG(scav2);
 
-	LOG(PURPLE << "\nCalling Destructor" << EOC);
+	LOG(PURPLE << "Calling Destructor" << EOC);
 	return (0);
 }
