@@ -6,7 +6,7 @@
 /*   By: harndt <harndt@student.42sp.org.br>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/02 09:19:15 by harndt            #+#    #+#             */
-/*   Updated: 2023/05/03 13:30:17 by harndt           ###   ########.fr       */
+/*   Updated: 2023/05/03 15:42:16 by harndt           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,6 @@ int	main(void)
 	LOG(trap1);
 	LOG(trap2);
 
-	LOG(PURPLE << "Calling Destructor" << EOC);
+	LOG(PURPLE << "Calling Destructors" << EOC);
 	return (0);
 }
