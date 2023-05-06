@@ -81,3 +81,5 @@ In this case an object from the class `Player` will have the attributes `x` and 
 
 ## References
 [What is the difference between private and protected members of C++ classes?](https://stackoverflow.com/questions/224966/what-is-the-difference-between-private-and-protected-members-of-c-classes)  
+
+# Multiple Inheritance
