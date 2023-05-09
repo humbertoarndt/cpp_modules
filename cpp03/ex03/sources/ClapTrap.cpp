@@ -6,7 +6,7 @@
 /*   By: harndt <harndt@student.42sp.org.br>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/02 09:33:22 by harndt            #+#    #+#             */
-/*   Updated: 2023/05/03 15:31:54 by harndt           ###   ########.fr       */
+/*   Updated: 2023/05/09 20:21:41 by harndt           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,10 @@
 // CONSTRUCTORS & DESTRUCTOR
 // =============================================================================
 
+/**
+ * @brief Construct a new Clap Trap:: Clap Trap object
+ * 
+ */
 ClapTrap::ClapTrap(void)
 		: _name("Default"), _hitPoints(10), _energyPoints(10), _attackDamage(0)
 {
@@ -26,6 +30,11 @@ ClapTrap::ClapTrap(void)
 	return ;
 }
 
+/**
+ * @brief Construct a new Clap Trap:: Clap Trap object
+ * 
+ * @param name The '_name' value.
+ */
 ClapTrap::ClapTrap(std::string const &name)
 		: _name(name), _hitPoints(10), _energyPoints(10), _attackDamage(0)
 {
@@ -34,6 +43,11 @@ ClapTrap::ClapTrap(std::string const &name)
 	return ;
 }
 
+/**
+ * @brief Construct a new ClapTrap:: ClapTrap object
+ * 
+ * @param src The ClapTrap object to be copied.
+ */
 ClapTrap::ClapTrap(ClapTrap const &src)
 {
 	if(SHOW_MSG == true)
@@ -46,6 +60,10 @@ ClapTrap::ClapTrap(ClapTrap const &src)
 	
 }
 
+/**
+ * @brief Destroy the Clap Trap:: Clap Trap object
+ * 
+ */
 ClapTrap::~ClapTrap(void)
 {
 	if (SHOW_MSG == true)
@@ -57,7 +75,13 @@ ClapTrap::~ClapTrap(void)
 // CONSTRUCTOR FOR DERIVED CLASSES
 // =============================================================================
 
-/* Construtors for derived classes */
+/**
+ * @brief Construct a new Clap Trap:: Clap Trap object
+ * 
+ * @param hitPoints New '_hitPoints'
+ * @param energyPoints New '_energyPoints'
+ * @param attackDamage New '_attackDamage'
+ */
 ClapTrap::ClapTrap(int hitPoints, int energyPoints, int attackDamage)
 		: _name("Default"), _hitPoints(hitPoints), _energyPoints(energyPoints), _attackDamage(attackDamage)
 {
@@ -65,6 +89,14 @@ ClapTrap::ClapTrap(int hitPoints, int energyPoints, int attackDamage)
 		LOG("ClapTrap Default protected construtor called");
 }
 
+/**
+ * @brief Construct a new Clap Trap:: Clap Trap object
+ * 
+ * @param name New '_name'
+ * @param hitPoints New '_hitPoints'
+ * @param energyPoints New '_energyPoints'
+ * @param attackDamage New '_attackDamage'
+ */
 ClapTrap::ClapTrap(std::string const &name, int hitPoints, int energyPoints, int attackDamage)
 		: _name(name), _hitPoints(hitPoints), _energyPoints(energyPoints), _attackDamage(attackDamage)
 {
@@ -76,6 +108,12 @@ ClapTrap::ClapTrap(std::string const &name, int hitPoints, int energyPoints, int
 // OPERATORS
 // =============================================================================
 
+/**
+ * @brief Overload for the '=' operator.
+ * 
+ * @param rhs The right hand side varible to be assigned.
+ * @return ClapTrap& A pointer to the assigned ClapTrap object.
+ */
 ClapTrap & ClapTrap::operator = (ClapTrap const &rhs)
 {
 	if (SHOW_MSG == true)
@@ -94,21 +132,41 @@ ClapTrap & ClapTrap::operator = (ClapTrap const &rhs)
 // GETTERS
 // =============================================================================
 
+/**
+ * @brief Gets '_name'
+ * 
+ * @return std::string '_name'
+ */
 std::string	ClapTrap::getName(void) const
 {
 	return (_name);
 }
 
+/**
+ * @brief Gets '_hitPoints'
+ * 
+ * @return int '_hitPoints'
+ */
 int	ClapTrap::getHitPoints(void) const
 {
 	return (_hitPoints);
 }
 
+/**
+ * @brief Gets '_energyPoints'
+ * 
+ * @return int '_energyPoints'
+ */
 int	ClapTrap::getEnergyPoints(void) const
 {
 	return (_energyPoints);
 }
 
+/**
+ * @brief Gets '_attackDamage'
+ * 
+ * @return int '_attackDamage'
+ */
 int	ClapTrap::getAttackDamage(void) const
 {
 	return (_attackDamage);
@@ -118,21 +176,41 @@ int	ClapTrap::getAttackDamage(void) const
 // SETTERS
 // =============================================================================
 
+/**
+ * @brief Sets '_name'
+ * 
+ * @param name New name.
+ */
 void	ClapTrap::setName(std::string const &name)
 {
 	_name = name;
 }
 
+/**
+ * @brief Sets '_hitPoints'
+ * 
+ * @param hitPoints New value to '_hitPoints'
+ */
 void	ClapTrap::setHitPoints(int const hitPoints)
 {
 	_hitPoints = hitPoints;
 }
 
+/**
+ * @brief Sets '_energyPoints'
+ * 
+ * @param energyPoints New value to '_energyPoints'
+ */
 void	ClapTrap::setEnergyPoints(int const energyPoints)
 {
 	_energyPoints = energyPoints;
 }
 
+/**
+ * @brief Sets '_attackDamage'
+ * 
+ * @param attackDamage New value to '_attackDamage'
+ */
 void	ClapTrap::setAttackDamage(int const attackDamage)
 {
 	_attackDamage = attackDamage;
@@ -142,6 +220,12 @@ void	ClapTrap::setAttackDamage(int const attackDamage)
 // MEMBER FUNCTIONS
 // =============================================================================
 
+/**
+ * @brief Checks if the ClapTrap has energyPoints, then attacks its target
+ and prints a log message.
+ * 
+ * @param target The name of its target.
+ */
 void	ClapTrap::attack(const std::string &target)
 {
 	if (!getEnergyPoints())
@@ -155,6 +239,12 @@ void	ClapTrap::attack(const std::string &target)
 	setEnergyPoints(getEnergyPoints() - 1);
 }
 
+/**
+ * @brief Checks if the ClapTrap has hitPoints, then reduces it, and prints
+ prints a log message.
+ * 
+ * @param amount The amount of damage taken.
+ */
 void	ClapTrap::takeDamage(unsigned int amount)
 {
 	if (!getHitPoints())
@@ -177,6 +267,12 @@ void	ClapTrap::takeDamage(unsigned int amount)
 	}
 }
 
+/**
+ * @brief Checks if the ClapTrap still has energyPoint and can be repaired,
+ then repairs it, and prints a log message
+ * 
+ * @param amount The amount of damage to repair.
+ */
 void	ClapTrap::beRepaired(unsigned int amount)
 {
 	if (!getEnergyPoints())
@@ -191,6 +287,13 @@ void	ClapTrap::beRepaired(unsigned int amount)
 			" repairs " << amount << " hitpoints! HP: " << getHitPoints());
 }
 
+/**
+ * @brief Overload for the 'std::onstream <<' operator.
+ * 
+ * @param o Output stream
+ * @param i Input stream
+ * @return std::ostream& Reference to the output.
+ */
 std::ostream & operator << (std::ostream &o, ClapTrap const &i)
 {
 	o << "+---" << std::endl;

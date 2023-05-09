@@ -6,7 +6,7 @@
 /*   By: harndt <harndt@student.42sp.org.br>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/03 15:14:57 by harndt            #+#    #+#             */
-/*   Updated: 2023/05/03 15:41:02 by harndt           ###   ########.fr       */
+/*   Updated: 2023/05/09 20:23:26 by harndt           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,10 @@
 // CONSTRUCTORS AND DESTRUCTOR
 // =============================================================================
 
+/**
+ * @brief Construct a new Frag Trap:: Frag Trap object
+ * 
+ */
 FragTrap::FragTrap(void) : ClapTrap("Default", 100, 100, 30)
 {
 	if (SHOW_MSG == true)
@@ -25,6 +29,11 @@ FragTrap::FragTrap(void) : ClapTrap("Default", 100, 100, 30)
 	return ;
 }
 
+/**
+ * @brief Construct a new Frag Trap:: Frag Trap object
+ * 
+ * @param name 
+ */
 FragTrap::FragTrap(std::string const &name) : ClapTrap(name, 100, 100, 30)
 {
 	if (SHOW_MSG == true)
@@ -32,6 +41,11 @@ FragTrap::FragTrap(std::string const &name) : ClapTrap(name, 100, 100, 30)
 	return ;
 }
 
+/**
+ * @brief Construct a new Frag Trap:: Frag Trap object
+ * 
+ * @param src The FragTrap object to be copied.
+ */
 FragTrap::FragTrap(FragTrap const &src) : ClapTrap(src)
 {
 	if (SHOW_MSG == true)
@@ -40,6 +54,10 @@ FragTrap::FragTrap(FragTrap const &src) : ClapTrap(src)
 	
 }
 
+/**
+ * @brief Destroy the Frag Trap:: Frag Trap object
+ * 
+ */
 FragTrap::~FragTrap(void)
 {
 	if (SHOW_MSG == true)
@@ -51,10 +69,16 @@ FragTrap::~FragTrap(void)
 // OPERATORS
 // =============================================================================
 
+/**
+ * @brief Overload for the '=' operator.
+ * 
+ * @param rhs The right hand side varible to be assigned.
+ * @return FragTrap& A pointer to the assigned FragTrap object.
+ */
 FragTrap & FragTrap::operator = (FragTrap const &rhs)
 {
 	if (SHOW_MSG == true)
-		LOG(YELLOW "ScavTrap Assignment operator called" EOC);
+		LOG(YELLOW "FragTrap Assignment operator called" EOC);
 	if (this != &rhs)
 		this->ClapTrap::operator = (rhs);
 	return (*this);
@@ -64,11 +88,22 @@ FragTrap & FragTrap::operator = (FragTrap const &rhs)
 // MEMBER FUNCTIONS
 // =============================================================================
 
+/**
+ * @brief The FragTrap prints a message asking for a high five
+ * 
+ */
 void	FragTrap::highFivesGuy(void)
 {
 	LOG(YELLOW "FragTrap requests a high five!" EOC);
 }
 
+/**
+ * @brief Overload for the 'std::onstream <<' operator.
+ * 
+ * @param o Output stream
+ * @param i Input stream
+ * @return std::ostream& Reference to the output.
+ */
 std::ostream & operator << (std::ostream  &o, FragTrap const &i)
 {
 	o << YELLOW << "+---" << std::endl;
