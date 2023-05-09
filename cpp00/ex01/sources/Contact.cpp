@@ -6,7 +6,7 @@
 /*   By: harndt <harndt@student.42sp.org.br>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/04 15:24:33 by harndt            #+#    #+#             */
-/*   Updated: 2023/04/19 11:41:52 by harndt           ###   ########.fr       */
+/*   Updated: 2023/05/09 11:21:38 by harndt           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,11 +17,19 @@
 // CONSTRUCTOR AND DESTRUCTOR
 // =============================================================================
 
+/**
+ * @brief Construct a new Contact:: Contact object
+ * 
+ */
 Contact::Contact(void)
 {
 	return ;
 }
 
+/**
+ * @brief Destroy the Contact:: Contact object
+ * 
+ */
 Contact::~Contact(void)
 {
 	return ;
@@ -139,6 +147,9 @@ std::string	Contact::get_darkest_secret(void) const
 // UTILS
 // =============================================================================
 
+/**
+ * @brief Displays all contacts info.
+ */
 void	Contact::display(void)
 {
 	std::cout << "First Name:\t" << this->_firstName << std::endl;

@@ -6,7 +6,7 @@
 /*   By: harndt <harndt@student.42sp.org.br>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/24 14:23:48 by harndt            #+#    #+#             */
-/*   Updated: 2023/04/24 14:43:28 by harndt           ###   ########.fr       */
+/*   Updated: 2023/05/09 12:47:03 by harndt           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,10 @@
 #include <iostream>
 
 #define LOG(x) std::cout << x << std::endl;
+
+/* Understanding and Using Floating Point Numbers
+https://www.cprogramming.com/tutorial/floating_point/
+understanding_floating_point.html */
 
 class	Fixed
 {
@@ -31,7 +35,6 @@ class	Fixed
 		Fixed &operator= (Fixed const &rhs);
 		int	getRawBits(void) const;
 		void	setRawBits(int const raw);
-		
 };
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: harndt <harndt@student.42sp.org.br>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/18 14:57:04 by harndt            #+#    #+#             */
-/*   Updated: 2023/04/18 15:55:59 by harndt           ###   ########.fr       */
+/*   Updated: 2023/05/09 11:36:36 by harndt           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,11 +16,19 @@
 // CONTRUCTOR AND DESTRUCTOR
 // =============================================================================
 
+/**
+ * @brief Construct a new Harl:: Harl object
+ * 
+ */
 Harl::Harl(void)
 {
 	return ;
 }
 
+/**
+ * @brief Destroy the Harl:: Harl object
+ * 
+ */
 Harl::~Harl(void)
 {
 	return ;
@@ -30,6 +38,10 @@ Harl::~Harl(void)
 // FUNCTION
 // =============================================================================
 
+/**
+ * @brief Prints the DEBUG message.
+ * 
+ */
 void	Harl::debug(void)
 {
 	PRINT("");
@@ -39,6 +51,10 @@ void	Harl::debug(void)
 	PRINT("");
 }
 
+/**
+ * @brief Prints the INFO message.
+ * 
+ */
 void	Harl::info(void)
 {
 	PRINT("");
@@ -49,6 +65,10 @@ void	Harl::info(void)
 	PRINT("");
 }
 
+/**
+ * @brief Prints the WARNING message.
+ * 
+ */
 void	Harl::warning(void)
 {
 	PRINT("");
@@ -58,6 +78,10 @@ void	Harl::warning(void)
 	PRINT("");
 }
 
+/**
+ * @brief Prints the ERROR message.
+ * 
+ */
 void	Harl::error(void)
 {
 	PRINT("");
@@ -67,6 +91,12 @@ void	Harl::error(void)
 	PRINT("");
 }
 
+/**
+ * @brief Prints a message based on the receiv level, or and 'Invalid option'
+ id the level doesn't exist.
+ * 
+ * @param level A String to indicate wich message should be printed.
+ */
 void	Harl::complain(std::string level)
 {
 	std::string levels[4] = {"DEBUG", "ERROR", "INFO", "WARNING"};
