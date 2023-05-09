@@ -110,7 +110,7 @@ class	Foo
 
 int	Foo::operator + (const Foo &rhs)
 {
-	return((int)(this->x -+rhs->x));
+	return((int)(this->x + rhs->x));
 }
 
 int	main(void)
