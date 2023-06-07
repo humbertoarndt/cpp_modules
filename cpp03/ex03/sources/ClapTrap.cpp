@@ -6,7 +6,7 @@
 /*   By: harndt <harndt@student.42sp.org.br>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/02 09:33:22 by harndt            #+#    #+#             */
-/*   Updated: 2023/05/09 20:21:41 by harndt           ###   ########.fr       */
+/*   Updated: 2023/06/07 17:57:03 by harndt           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ ClapTrap::ClapTrap(void)
 		: _name("Default"), _hitPoints(10), _energyPoints(10), _attackDamage(0)
 {
 	if (SHOW_MSG == true)
-		LOG("ClapTrap Default constructor called");
+		LOG("⚪ ClapTrap Default constructor called");
 	return ;
 }
 
@@ -39,7 +39,7 @@ ClapTrap::ClapTrap(std::string const &name)
 		: _name(name), _hitPoints(10), _energyPoints(10), _attackDamage(0)
 {
 	if (SHOW_MSG == true)
-		LOG("ClapTrap String constructor called");
+		LOG("⚪ ClapTrap String constructor called");
 	return ;
 }
 
@@ -51,7 +51,7 @@ ClapTrap::ClapTrap(std::string const &name)
 ClapTrap::ClapTrap(ClapTrap const &src)
 {
 	if(SHOW_MSG == true)
-		LOG("ClapTrap Copy constructor called");
+		LOG("⚪ ClapTrap Copy constructor called");
 	setName(src.getName());
 	setHitPoints(src.getHitPoints());
 	setEnergyPoints(src.getEnergyPoints());
@@ -67,7 +67,7 @@ ClapTrap::ClapTrap(ClapTrap const &src)
 ClapTrap::~ClapTrap(void)
 {
 	if (SHOW_MSG == true)
-		LOG("ClapTrap Destructor called");
+		LOG("⚪ ClapTrap Destructor called");
 	return ;
 }
 
@@ -86,7 +86,7 @@ ClapTrap::ClapTrap(int hitPoints, int energyPoints, int attackDamage)
 		: _name("Default"), _hitPoints(hitPoints), _energyPoints(energyPoints), _attackDamage(attackDamage)
 {
 	if (SHOW_MSG == true)
-		LOG("ClapTrap Default protected construtor called");
+		LOG("⚪ ClapTrap Default protected construtor called");
 }
 
 /**
@@ -101,7 +101,7 @@ ClapTrap::ClapTrap(std::string const &name, int hitPoints, int energyPoints, int
 		: _name(name), _hitPoints(hitPoints), _energyPoints(energyPoints), _attackDamage(attackDamage)
 {
 	if (SHOW_MSG == true)
-		LOG("ClapTrap protected constructor called");
+		LOG("⚪ ClapTrap protected constructor called");
 }
 
 // =============================================================================
@@ -117,7 +117,7 @@ ClapTrap::ClapTrap(std::string const &name, int hitPoints, int energyPoints, int
 ClapTrap & ClapTrap::operator = (ClapTrap const &rhs)
 {
 	if (SHOW_MSG == true)
-		LOG("ClapTrap Assignment operator called");
+		LOG("⚪ ClapTrap Assignment operator called");
 	if (this != &rhs)
 	{
 		setName(rhs.getName());

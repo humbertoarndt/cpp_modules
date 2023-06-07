@@ -6,7 +6,7 @@
 /*   By: harndt <harndt@student.42sp.org.br>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/02 09:19:15 by harndt            #+#    #+#             */
-/*   Updated: 2023/05/06 12:21:50 by harndt           ###   ########.fr       */
+/*   Updated: 2023/06/07 18:05:18 by harndt           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,22 +14,22 @@
 
 int	main(void)
 {
-	LOG(PURPLE << "\nCalling Constructors" << EOC);
+	LOG("\nCalling Constructors");
 	DiamondTrap	diamond("Kureijī Daiyamondo");
 	DiamondTrap	unbreakeble;
 	DiamondTrap d = unbreakeble = diamond;
 
-	LOG(PURPLE << "\nShow Traps' Status" << EOC);
+	LOG("\nShow Traps' Status");
 	LOG(diamond);
 	
-	LOG(PURPLE << "DiamondTrap' Showing Off" << EOC);
+	LOG("DiamondTrap' Showing Off");
 	diamond.whoAmI();
 	for (int i = 0; i < 3; i++)
 		diamond.attack("Kirā Kuīn");
 
-	LOG(PURPLE << "\nShow Traps' Status" << EOC);
+	LOG("\nShow Traps' Status");
 	LOG(diamond);
 
-	LOG(PURPLE << "Calling Destructors" << EOC);
+	LOG("Calling Destructors");
 	return (0);
 }

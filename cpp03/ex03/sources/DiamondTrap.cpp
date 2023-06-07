@@ -6,7 +6,7 @@
 /*   By: harndt <harndt@student.42sp.org.br>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/03 16:19:56 by harndt            #+#    #+#             */
-/*   Updated: 2023/05/09 20:30:25 by harndt           ###   ########.fr       */
+/*   Updated: 2023/06/07 18:13:38 by harndt           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ DiamondTrap::DiamondTrap(void)
 			: ClapTrap("Default", 100, 50, 30), ScavTrap(), FragTrap()
 {
 	if (SHOW_MSG == true)
-		LOG(GREEN "DiamondTrap Default constructor called" EOC);
+		LOG("🔵 DiamondTrap Default constructor called");
 	return ;
 }
 
@@ -40,7 +40,7 @@ DiamondTrap::DiamondTrap(std::string const &name)
 			FragTrap(), _name(name)
 {
 	if (SHOW_MSG == true)
-		LOG(GREEN "DiamondTrap String constructor called" EOC);
+		LOG("🔵 DiamondTrap String constructor called");
 	return ;
 }
 
@@ -52,7 +52,7 @@ DiamondTrap::DiamondTrap(std::string const &name)
 DiamondTrap::DiamondTrap(DiamondTrap const &src) : ClapTrap(src), ScavTrap(), FragTrap()
 {
 	if (SHOW_MSG == true)
-		LOG(GREEN "DiamondTrap Copy constructor called" EOC);
+		LOG("🔵 DiamondTrap Copy constructor called");
 	return ;
 }
 
@@ -63,7 +63,7 @@ DiamondTrap::DiamondTrap(DiamondTrap const &src) : ClapTrap(src), ScavTrap(), Fr
 DiamondTrap::~DiamondTrap(void)
 {
 	if (SHOW_MSG == true)
-		LOG(GREEN "DiamondTrap destructor called" EOC);
+		LOG("🔵 DiamondTrap destructor called");
 	return ;
 }
 
@@ -80,7 +80,7 @@ DiamondTrap::~DiamondTrap(void)
 DiamondTrap & DiamondTrap::operator = (DiamondTrap const &rhs)
 {
 	if (SHOW_MSG)
-		LOG(GREEN "DiamondTrap Assignment operator called" EOC);
+		LOG("🔵 DiamondTrap Assignment operator called");
 	if (this != &rhs)
 		this->ClapTrap::operator = (rhs);
 	return (*this);
@@ -130,8 +130,8 @@ void	DiamondTrap::attack(const std::string &target)
  */
 void	DiamondTrap::whoAmI(void)
 {
-	LOG(GREEN << "I am " << getName() << ", grandchild of " \
-		<< ClapTrap::getName() << EOC);
+	LOG("I am " << getName() << ", grandchild of " \
+		<< ClapTrap::getName());
 }
 
 /**
@@ -143,12 +143,12 @@ void	DiamondTrap::whoAmI(void)
  */
 std::ostream & operator << (std::ostream &o, DiamondTrap const &i)
 {
-	o << GREEN << "+---" << std::endl;
+	o << "+---" << std::endl;
 	o << "| ClapTrap" << std::endl;
 	o << "| Name: " << i.getName() << std::endl;
 	o << "| Hit Points: " << i.getHitPoints() << std::endl;
 	o << "| Energy Points: " << i.getEnergyPoints() << std::endl;
 	o << "| Attack Damage: " << i.getAttackDamage() << std::endl;
-	o << "+---" << EOC << std::endl;
+	o << "+---" << std::endl;
 	return (o);
 }

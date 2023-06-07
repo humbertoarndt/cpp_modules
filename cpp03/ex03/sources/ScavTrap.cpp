@@ -6,7 +6,7 @@
 /*   By: harndt <harndt@student.42sp.org.br>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/02 22:14:36 by harndt            #+#    #+#             */
-/*   Updated: 2023/05/09 20:22:49 by harndt           ###   ########.fr       */
+/*   Updated: 2023/06/07 18:00:54 by harndt           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@
 ScavTrap::ScavTrap(void) : ClapTrap("Default", 100, 50, 20)
 {
 	if (SHOW_MSG == true)
-		LOG(WHITE "ScavTrap Default constructor called" EOC);
+		LOG("⚫ ScavTrap Default constructor called");
 	return ;
 }
 
@@ -37,7 +37,7 @@ ScavTrap::ScavTrap(void) : ClapTrap("Default", 100, 50, 20)
 ScavTrap::ScavTrap(std::string const &name) : ClapTrap(name, 100, 50, 20)
 {
 	if (SHOW_MSG == true)
-		LOG(WHITE "ScavTrap String constructor called" EOC);
+		LOG("⚫ ScavTrap String constructor called");
 	return ;
 }
 
@@ -49,7 +49,7 @@ ScavTrap::ScavTrap(std::string const &name) : ClapTrap(name, 100, 50, 20)
 ScavTrap::ScavTrap(ScavTrap const &src) : ClapTrap(src)
 {
 	if (SHOW_MSG == true)
-		LOG(WHITE "ScavTrap Copy constructor called" EOC);
+		LOG("⚫ ScavTrap Copy constructor called");
 	return ;
 }
 
@@ -60,7 +60,7 @@ ScavTrap::ScavTrap(ScavTrap const &src) : ClapTrap(src)
 ScavTrap::~ScavTrap(void)
 {
 	if (SHOW_MSG == true)
-		LOG(WHITE "ScavTrap Destructor called" EOC);
+		LOG("⚫ ScavTrap Destructor called");
 	return ;
 }
 
@@ -77,7 +77,7 @@ ScavTrap::~ScavTrap(void)
 ScavTrap & ScavTrap::operator = (ScavTrap const &rhs)
 {
 	if (SHOW_MSG == true)
-		LOG(WHITE "ScavTrap Assignment operator called" EOC);
+		LOG("⚫ ScavTrap Assignment operator called");
 	if (this != &rhs)
 		this->ClapTrap::operator = (rhs);
 	return (*this);
@@ -97,12 +97,12 @@ void	ScavTrap::attack(const std::string &target)
 {
 	if (!getEnergyPoints())
 	{
-		LOG(WHITE "ScavTrap " << getName() << \
-			" doesn't have any more energy!" EOC);
+		LOG("ScavTrap " << getName() << \
+			" doesn't have any more energy!");
 		return ;
 	}
-	LOG(WHITE "ScavTrap " << getName() << " attacks " << target << \
-		", causing " << getAttackDamage() << " points of damage!" EOC);
+	LOG("ScavTrap " << getName() << " attacks " << target << \
+		", causing " << getAttackDamage() << " points of damage!");
 	setEnergyPoints(getEnergyPoints() - 1);
 }
 
@@ -112,7 +112,7 @@ void	ScavTrap::attack(const std::string &target)
  */
 void	ScavTrap::guardGate(void)
 {
-	LOG(WHITE "ScavTrap is now in keeper mode.");
+	LOG("ScavTrap is now in keeper mode.");
 }
 
 /**
@@ -124,12 +124,12 @@ void	ScavTrap::guardGate(void)
  */
 std::ostream & operator << (std::ostream &o, ScavTrap const &i)
 {
-	o << WHITE << "+---" << std::endl;
+	o << "+---" << std::endl;
 	o << "| ScavTrap" << std::endl;
 	o << "| Name: " << i.getName() << std::endl;
 	o << "| Hit Points: " << i.getHitPoints() << std::endl;
 	o << "| Energy Points: " << i.getEnergyPoints() << std::endl;
 	o << "| Attack Damage: " << i.getAttackDamage() << std::endl;
-	o << "+---" << EOC << std::endl;
+	o << "+---" << std::endl;
 	return (o);
 }

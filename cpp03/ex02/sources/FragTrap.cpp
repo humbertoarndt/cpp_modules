@@ -6,7 +6,7 @@
 /*   By: harndt <harndt@student.42sp.org.br>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/03 15:14:57 by harndt            #+#    #+#             */
-/*   Updated: 2023/05/09 20:23:26 by harndt           ###   ########.fr       */
+/*   Updated: 2023/06/07 18:12:09 by harndt           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@
 FragTrap::FragTrap(void) : ClapTrap("Default", 100, 100, 30)
 {
 	if (SHOW_MSG == true)
-		LOG(YELLOW "FragTrap Default constructor called" EOC);
+		LOG("🔴 FragTrap Default constructor called");
 	return ;
 }
 
@@ -37,7 +37,7 @@ FragTrap::FragTrap(void) : ClapTrap("Default", 100, 100, 30)
 FragTrap::FragTrap(std::string const &name) : ClapTrap(name, 100, 100, 30)
 {
 	if (SHOW_MSG == true)
-		LOG(YELLOW "FragTrap String constructor called" EOC);
+		LOG("🔴 FragTrap String constructor called");
 	return ;
 }
 
@@ -49,7 +49,7 @@ FragTrap::FragTrap(std::string const &name) : ClapTrap(name, 100, 100, 30)
 FragTrap::FragTrap(FragTrap const &src) : ClapTrap(src)
 {
 	if (SHOW_MSG == true)
-		LOG(YELLOW "FragTrap Copy construtor called" EOC);
+		LOG("🔴 FragTrap Copy construtor called");
 	return ;
 	
 }
@@ -61,7 +61,7 @@ FragTrap::FragTrap(FragTrap const &src) : ClapTrap(src)
 FragTrap::~FragTrap(void)
 {
 	if (SHOW_MSG == true)
-		LOG(YELLOW "FragTrap destructor called" EOC);
+		LOG("🔴 FragTrap destructor called");
 	return ;
 }
 
@@ -78,7 +78,7 @@ FragTrap::~FragTrap(void)
 FragTrap & FragTrap::operator = (FragTrap const &rhs)
 {
 	if (SHOW_MSG == true)
-		LOG(YELLOW "FragTrap Assignment operator called" EOC);
+		LOG("🔴 FragTrap Assignment operator called");
 	if (this != &rhs)
 		this->ClapTrap::operator = (rhs);
 	return (*this);
@@ -94,7 +94,7 @@ FragTrap & FragTrap::operator = (FragTrap const &rhs)
  */
 void	FragTrap::highFivesGuy(void)
 {
-	LOG(YELLOW "FragTrap requests a high five!" EOC);
+	LOG("FragTrap requests a high five!");
 }
 
 /**
@@ -106,12 +106,12 @@ void	FragTrap::highFivesGuy(void)
  */
 std::ostream & operator << (std::ostream  &o, FragTrap const &i)
 {
-	o << YELLOW << "+---" << std::endl;
+	o << "+---" << std::endl;
 	o << "| FragTrap" << std::endl;
 	o << "| Name: " << i.getName() << std::endl;
 	o << "| Hit Points: " << i.getHitPoints() << std::endl;
 	o << "| Energy Points: " << i.getEnergyPoints() << std::endl;
 	o << "| Attack Damage: " << i.getAttackDamage() << std::endl;
-	o << "+---" << EOC << std::endl;
+	o << "+---" << std::endl;
 	return (o);
 }

@@ -6,7 +6,7 @@
 /*   By: harndt <harndt@student.42sp.org.br>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/02 09:19:15 by harndt            #+#    #+#             */
-/*   Updated: 2023/05/03 15:44:53 by harndt           ###   ########.fr       */
+/*   Updated: 2023/06/07 18:06:18 by harndt           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 int	main(void)
 {
-	LOG(PURPLE << "\nCalling Constructors" << EOC);
+	LOG("\nCalling Constructors");
 	ClapTrap	clap;
 	ScavTrap	scav;
 	FragTrap	frag;
@@ -24,15 +24,15 @@ int	main(void)
 	FragTrap	frag3 = frag;
 	FragTrap	frag4 = frag3 = frag;
 
-	LOG(PURPLE << "\nShow Traps' Status" << EOC);
+	LOG("\nShow Traps' Status");
 	LOG(clap);
 	LOG(scav);
 	LOG(frag1);
 	LOG(frag2);
 
-	LOG(PURPLE << "High Five Time" << EOC);
+	LOG("High Five Time");
 	frag2.highFivesGuy();
 
-	LOG(PURPLE << "\nCalling Destructors" << EOC);
+	LOG("\nCalling Destructors");
 	return (0);
 }

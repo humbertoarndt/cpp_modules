@@ -6,7 +6,7 @@
 /*   By: harndt <harndt@student.42sp.org.br>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/02 09:19:15 by harndt            #+#    #+#             */
-/*   Updated: 2023/05/03 15:42:09 by harndt           ###   ########.fr       */
+/*   Updated: 2023/06/07 18:07:17 by harndt           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int	main(void)
 {
-	LOG(PURPLE << "\nCalling Constructors" << EOC);
+	LOG("\nCalling Constructors");
 	ClapTrap	trap;
 	ScavTrap	scav;
 	ScavTrap	scav1("Marvin");
@@ -22,33 +22,33 @@ int	main(void)
 	ScavTrap	scav3 = scav;
 	ScavTrap	scav4 = scav3 = scav;
 
-	LOG(PURPLE << "\nShow Traps' Status" << EOC);
+	LOG("\nShow Traps' Status");
 	LOG(trap);
 	LOG(scav1);
 	LOG(scav2);
 
-	LOG(PURPLE << "ScavTraps Showing Off" << EOC);
+	LOG("ScavTraps Showing Off");
 	for (int i = 0; i < 3; i++)
 	{
 		scav1.attack("Wall-E");
 		scav2.takeDamage(scav1.getAttackDamage());
 	}
 
-	LOG(PURPLE << "\nShow ScavTraps' Status" << EOC);
+	LOG("\nShow ScavTraps' Status");
 	LOG(scav1);
 	LOG(scav2);
 
-	LOG(PURPLE << "Guard Stance" << EOC);
+	LOG("Guard Stance");
 	scav2.guardGate();
 
-	LOG(PURPLE << "\nRepairing Time" << EOC);
+	LOG("\nRepairing Time");
 	for (int i = 0; i < 3; i++)
 		scav2.beRepaired(20);
 
-	LOG(PURPLE << "\nShow ClapTraps' Status" << EOC);
+	LOG("\nShow ClapTraps' Status");
 	LOG(scav1);
 	LOG(scav2);
 
-	LOG(PURPLE << "Calling Destructors" << EOC);
+	LOG("Calling Destructors");
 	return (0);
 }
