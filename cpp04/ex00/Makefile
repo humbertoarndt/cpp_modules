@@ -6,7 +6,7 @@
 #    By: harndt <harndt@student.42sp.org.br>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/17 15:50:38 by harndt            #+#    #+#              #
-#    Updated: 2023/05/17 15:52:09 by harndt           ###   ########.fr        #
+#    Updated: 2023/06/07 15:30:12 by harndt           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,11 +14,13 @@
 # VARIABLES
 # ------------------------------------------------------------------------------
 
-NAME		:=	a.out
+NAME		:=	animals
 CC			:=	c++
 CFLAGS		:=	-Wall -Wextra -Werror -std=c++98
 HEADERS		:=	./includes/
-SRCS		:=	./sources/main.cpp	./sources/Animal.cpp
+SRCS		:=	./sources/main.cpp	./sources/Animal.cpp	\
+				./sources/Cat.cpp	./sources/Dog.cpp		\
+				./sources/WrongAnimal.cpp	./sources/WrongCat.cpp
 
 OBJS		:=	$(SRCS:.cpp=.o)
 

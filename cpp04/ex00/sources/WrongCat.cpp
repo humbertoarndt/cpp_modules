@@ -1,75 +1,63 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Animal.cpp                                         :+:      :+:    :+:   */
+/*   WrongCat.cpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: harndt <harndt@student.42sp.org.br>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/17 15:33:53 by harndt            #+#    #+#             */
-/*   Updated: 2023/05/17 15:57:45 by harndt           ###   ########.fr       */
+/*   Created: 2023/06/07 15:27:28 by harndt            #+#    #+#             */
+/*   Updated: 2023/06/07 15:46:39 by harndt           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Animal.hpp"
+#include "WrongCat.hpp"
 
 #define SHOW_MSG true
 
 // =============================================================================
-// CONSTRUCTORS AND DESTRUCTORS
+// CONSTRUCTORS AND DESTRUCTOR
 // =============================================================================
 
-Animal::Animal(void)
+WrongCat::WrongCat(void) : WrongAnimal("WrongCat")
 {
 	if (SHOW_MSG == true)
-		LOG("Animal constructor called");
+		LOG("❌🐈 Default constructor called");
 	return ;
 }
 
-Animal::Animal(Animal const &src)
+WrongCat::WrongCat(WrongCat const &src) : WrongAnimal(src)
 {
 	if (SHOW_MSG == true)
-		LOG("Animal Copy constructor called");
-	*this = src;
+		LOG("❌🐈 Copy constructor called");
+	this->_type = src.getType();
 	return ;
 }
 
-Animal::~Animal(void)
+WrongCat::~WrongCat(void)
 {
 	if (SHOW_MSG == true)
-		LOG("Animal destructor called");
+		LOG("❌🐈 Destructor called");
 	return ;
 }
 
 // =============================================================================
-// OPERATOR
+// OPERATORS OVERLOAD
 // =============================================================================
 
-Animal & Animal::operator = (Animal const &rhs)
+WrongCat & WrongCat::operator = (WrongCat const &rhs)
 {
 	if (SHOW_MSG == true)
-		LOG("Animal Assignment operator called");
+		LOG("❌🐈 Assignment operator called");
 	if (this != &rhs)
-		type = rhs.type;
+		_type = rhs.getType();
 	return (*this);
-}
-
-std::ostream &operator << (std::ostream &o, Animal const &i)
-{
-	(void)i;
-	o << "Animal";
-	return (o);
 }
 
 // =============================================================================
 // MEMBER FUNCTIONS
 // =============================================================================
 
-std::string	Animal::getType(void) const
+void	WrongCat::makeSound(void) const
 {
-	return (type);
-}
-
-void	Animal::makeSound(void) const
-{
-	LOG("Humberto");
+	LOG("Not a meow");
 }
