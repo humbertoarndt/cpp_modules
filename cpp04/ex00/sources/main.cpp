@@ -6,7 +6,7 @@
 /*   By: harndt <harndt@student.42sp.org.br>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/17 15:25:41 by harndt            #+#    #+#             */
-/*   Updated: 2023/06/07 16:17:48 by harndt           ###   ########.fr       */
+/*   Updated: 2023/06/07 17:38:47 by harndt           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,10 @@
 #include "Dog.hpp"
 #include "WrongCat.hpp"
 
+/**
+ * @brief Prints polymorphism tests using classes pointers.
+ * 
+ */
 void	pointersTest(void)
 {
 	std::cout << "Subject Tests Using Pointers:" << std::endl;
@@ -55,6 +59,10 @@ void	pointersTest(void)
 	delete meta;
 }
 
+/**
+ * @brief Prints polymorphism tests using classes instances.
+ * 
+ */
 void	noPointerTest(void)
 {
 	std::cout << "\nTests Without Pointers:" << std::endl;
@@ -91,6 +99,23 @@ void	noPointerTest(void)
 
 int	main(void)
 {
+	/*
+	Class Pointer VS Class Instance
+	
+	- Allocation on the heap is not as cheap as allocation on the stack.
+	- Objects on the stack must be smaller, for variety of reasons 
+	(cost of copy construction, locality of reference, stack overflow, etc.)
+	- Using pointers and references can remove compilation dependencies and 
+	consequently reduce the compilation times.
+	- Objects on the stack are cleaned-up automatically in case of exceptions. 
+	- Objects on the stack tend to be closer to each other in memory, 
+	and this helps caching and paging.
+
+	You can only use polymorphy with instance pointers or references, 
+	not with instances.
+	https://cplusplus.com/forum/general/37813/
+	*/
+	
 	/* Subject tests */
 	pointersTest();
 	std::cout << "\n---------------------------" << std::endl;

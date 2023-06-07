@@ -6,7 +6,7 @@
 /*   By: harndt <harndt@student.42sp.org.br>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/07 15:27:28 by harndt            #+#    #+#             */
-/*   Updated: 2023/06/07 15:46:39 by harndt           ###   ########.fr       */
+/*   Updated: 2023/06/07 17:44:06 by harndt           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,10 @@
 // CONSTRUCTORS AND DESTRUCTOR
 // =============================================================================
 
+/**
+ * @brief Construct a new Wrong Cat:: Wrong Cat object
+ * 
+ */
 WrongCat::WrongCat(void) : WrongAnimal("WrongCat")
 {
 	if (SHOW_MSG == true)
@@ -25,6 +29,11 @@ WrongCat::WrongCat(void) : WrongAnimal("WrongCat")
 	return ;
 }
 
+/**
+ * @brief Construct a new Wrong Cat:: Wrong Cat object
+ * 
+ * @param src The Wrong Cat object to be copied.
+ */
 WrongCat::WrongCat(WrongCat const &src) : WrongAnimal(src)
 {
 	if (SHOW_MSG == true)
@@ -33,6 +42,10 @@ WrongCat::WrongCat(WrongCat const &src) : WrongAnimal(src)
 	return ;
 }
 
+/**
+ * @brief Destroy the Wrong Cat:: Wrong Cat object
+ * 
+ */
 WrongCat::~WrongCat(void)
 {
 	if (SHOW_MSG == true)
@@ -44,6 +57,12 @@ WrongCat::~WrongCat(void)
 // OPERATORS OVERLOAD
 // =============================================================================
 
+/**
+ * @brief Overload for the '=' operator
+ * 
+ * @param rhs The right hand side varible to be assigned.
+ * @return WrongCat& A pointer to the assigned WrongCat object.
+ */
 WrongCat & WrongCat::operator = (WrongCat const &rhs)
 {
 	if (SHOW_MSG == true)
@@ -57,6 +76,10 @@ WrongCat & WrongCat::operator = (WrongCat const &rhs)
 // MEMBER FUNCTIONS
 // =============================================================================
 
+/**
+ * @brief Prints a string.
+ * 
+ */
 void	WrongCat::makeSound(void) const
 {
 	LOG("Not a meow");

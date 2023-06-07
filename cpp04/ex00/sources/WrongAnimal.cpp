@@ -6,7 +6,7 @@
 /*   By: harndt <harndt@student.42sp.org.br>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/06 14:39:57 by harndt            #+#    #+#             */
-/*   Updated: 2023/06/07 15:59:49 by harndt           ###   ########.fr       */
+/*   Updated: 2023/06/07 17:45:22 by harndt           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,10 @@
 // CONSTRUCTORS AND DESTRUCTOR
 // =============================================================================
 
+/**
+ * @brief Construct a new Wrong Animal:: Wrong Animal object
+ * 
+ */
 WrongAnimal::WrongAnimal(void) : _type("WrongUndefined")
 {
 	if (SHOW_MSG == true)
@@ -25,6 +29,11 @@ WrongAnimal::WrongAnimal(void) : _type("WrongUndefined")
 	return ;
 }
 
+/**
+ * @brief Construct a new Wrong Animal:: Wrong Animal object
+ * 
+ * @param type The Wrong Animal '_type'
+ */
 WrongAnimal::WrongAnimal(std::string const &type) : _type(type)
 {
 	if (SHOW_MSG == true)
@@ -32,6 +41,11 @@ WrongAnimal::WrongAnimal(std::string const &type) : _type(type)
 	return ;
 }
 
+/**
+ * @brief Construct a new Wrong Animal:: Wrong Animal object
+ * 
+ * @param src The Wrong Animal object to be copied.
+ */
 WrongAnimal::WrongAnimal(WrongAnimal const &src)
 {
 	if (SHOW_MSG == true)
@@ -40,6 +54,10 @@ WrongAnimal::WrongAnimal(WrongAnimal const &src)
 	return ;
 }
 
+/**
+ * @brief Destroy the Wrong Animal:: Wrong Animal object
+ * 
+ */
 WrongAnimal::~WrongAnimal(void)
 {
 	if (SHOW_MSG == true)
@@ -51,6 +69,12 @@ WrongAnimal::~WrongAnimal(void)
 // OPERATOR
 // =============================================================================
 
+/**
+ * @brief Overload for the '=' operator
+ * 
+ * @param rhs The right hand side varible to be assigned.
+ * @return WrongAnimal& A pointer to the assigned WrongAnimal object.
+ */
 WrongAnimal & WrongAnimal::operator = (WrongAnimal const &rhs)
 {
 	if (SHOW_MSG == true)
@@ -64,11 +88,20 @@ WrongAnimal & WrongAnimal::operator = (WrongAnimal const &rhs)
 // MEMBER FUNCTIONS
 // =============================================================================
 
+/**
+ * @brief Gets the '_type' attributes.
+ * 
+ * @return std::string '_type'
+ */
 std::string	WrongAnimal::getType(void) const
 {
 	return (_type);
 }
 
+/**
+ * @brief Prints a string.
+ * 
+ */
 void	WrongAnimal::makeSound(void) const
 {
 	LOG("Not ahah.wav");
