@@ -6,7 +6,7 @@
 /*   By: harndt <harndt@student.42sp.org.br>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/09 15:55:36 by harndt            #+#    #+#             */
-/*   Updated: 2023/06/09 19:10:00 by harndt           ###   ########.fr       */
+/*   Updated: 2023/06/12 16:42:09 by harndt           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,6 +80,11 @@ Brain::Brain(void)
 	return ;
 }
 
+/**
+ * @brief Construct a new Brain:: Brain object
+ * 
+ * @param src The Brain object to be copied.
+ */
 Brain::Brain(Brain const &src)
 {
 	if (SHOW_MSG == true)
@@ -104,6 +109,12 @@ Brain::~Brain(void)
 // OPERATORS OVERLOAD
 // =============================================================================
 
+/**
+ * @brief Overload for the '=' operator
+ * 
+ * @param rhs The right hand side varible to be assigned.
+ * @return Brain& A pointer to the assigned Brain object.
+ */
 Brain & Brain::operator = (Brain const &rhs)
 {
 	if (SHOW_MSG == true)
@@ -118,11 +129,23 @@ Brain & Brain::operator = (Brain const &rhs)
 // MEMBER FUNCTIONS
 // =============================================================================
 
+/**
+ * @brief Gets an idea from the '_ideas[MAX_IDEAS]' array.
+ * 
+ * @param i size_t index.
+ * @return std::string.
+ */
 std::string	Brain::getIdea(size_t i) const
 {
 	return (this->_ideas[i]);
 }
 
+/**
+ * @brief Sets an idea in the '_ideas[MAX_IDEAS]' array.
+ * 
+ * @param i size_t index.
+* @param idea the idea to write in the 'i' postion.
+ */
 void	Brain::setIdea(size_t i, std::string idea)
 {
 	this->_ideas[i] = idea;

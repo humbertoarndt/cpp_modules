@@ -6,104 +6,23 @@
 /*   By: harndt <harndt@student.42sp.org.br>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/17 15:25:41 by harndt            #+#    #+#             */
-/*   Updated: 2023/06/09 19:29:26 by harndt           ###   ########.fr       */
+/*   Updated: 2023/06/12 16:35:56 by harndt           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Cat.hpp"
 #include "Dog.hpp"
-#include "WrongCat.hpp"
-#include "Brain.hpp"
 
 /**
- * @brief Prints polymorphism tests using classes pointers.
+ * @brief Testing what the subject asked.
  * 
  */
-void	pointersTest(void)
+void	testSubject(void)
 {
-	std::cout << "Subject Tests Using Pointers:" << std::endl;
-	std::cout << "[pointersTest] Constructors list:" << std::endl;
-	
-	const Animal *meta = new Animal();
-	const Animal *j = new Dog();
-	const Animal *i = new Cat();
-	const WrongAnimal *h = new WrongAnimal();
-	const WrongAnimal *g = new WrongCat();
-	
-	/* Printing types */
-	std::cout << "\n[pointersTest] Printing Types:" << std::endl;
-	std::cout << "🧬 Animal: " << meta->getType() << " " << std::endl;
-	std::cout << "🐕 Dog: " << j->getType() << " " << std::endl;
-	std::cout << "🐈 Cat: " << i->getType() << " " << std::endl;
-	std::cout << "❌🧬 WrongAnimal: " << h->getType() << " " << std::endl;
-	std::cout << "❌🐈 WrongCat: " << g->getType() << " " << std::endl;
-
-	/* Making Sounds */
-	std::cout << "\n[pointersTest] Making Sounds:" << std::endl;
-	std::cout << "❌🐈 WrongCat says: ";
-	g->makeSound();
-	std::cout << "❌🧬 WrongAnimal says: ";
-	h->makeSound();
-	std::cout << "🐈 Cat says: ";
-	i->makeSound(); //will output the cat sound!
-	std::cout << "🐕 Dog says: ";
-	j->makeSound();
-	std::cout << "🧬 Animal says: ";
-	meta->makeSound();
-
-	std::cout << "\n[pointersTest] Destructors list:" << std::endl;
-
-	delete g;
-	delete h;
-	delete i;
-	delete j;
-	delete meta;
-}
-
-/**
- * @brief Prints polymorphism tests using classes instances.
- * 
- */
-void	noPointerTest(void)
-{
-	std::cout << "\nTests Without Pointers:" << std::endl;
-	std::cout << "\n[noPointerTest] Constructors list:" << std::endl;
-	const Animal pet1 = Animal();
-	const Animal pet2 = Cat();
-	const Animal pet3 = Dog();
-	const WrongAnimal notPet1 = WrongAnimal();
-	const WrongAnimal notPet2 = WrongCat();
-
-	/* Printing types */
-	std::cout << "\n[noPointerTest] Printing Types:" << std::endl;
-	std::cout << "🧬 Animal: " << pet1.getType() << " " << std::endl;
-	std::cout << "🐈 Cat: " << pet2.getType() << " " << std::endl;
-	std::cout << "🐕 Dog: " << pet3.getType() << " " << std::endl;
-	std::cout << "❌🧬 WrongAnimal: " << notPet1.getType() << " " << std::endl;
-	std::cout << "❌🐈 WrongCat: " << notPet2.getType() << " " << std::endl;
-
-	/* Making Sounds */
-	std::cout << "\n[noPointerTest] Making Sounds:" << std::endl;
-	std::cout << "🧬 Animal says: ";
-	pet1.makeSound();
-	std::cout << "🐈 Cat says: ";
-	pet2.makeSound(); //will output the cat sound!
-	std::cout << "🐕 Dog says: ";
-	pet3.makeSound();
-	std::cout << "❌🧬 WrongAnimal says: ";
-	notPet1.makeSound();
-	std::cout << "❌🐈 WrongCat says: ";
-	notPet2.makeSound();
-
-	std::cout << "\n[noPointerTest] Destructors list:" << std::endl;
-}
-
-int	main(void)
-{	
 	size_t			count = 3;
 	const Animal	*animals[count];
 
-		std::cout << "\nCalling Constructors=====================" << std::endl;
+	std::cout << "\nCalling Constructors=====================" << std::endl;
 	for (size_t i = 0; i <= count; i++)
 	{
 		if (i % 2)
@@ -111,10 +30,74 @@ int	main(void)
 		else
 			animals[i] = new Dog();
 	}
+	
+	std::cout << "\nChecking Classes=========================" << std::endl;
+	for (size_t i = 0; i <= count; i++)
+	{
+		if (i % 2)
+		{
+			std::cout << "Class Cat" << std::endl;
+			std::cout << "Type: ";
+			LOG(animals[i]->getType());
+			std::cout << "makeSound: ";
+			animals[i]->makeSound();
+		}
+		else
+		{
+			std::cout << "Class Dog" << std::endl;
+			std::cout << "Type: ";
+			LOG(animals[i]->getType());
+			std::cout << "makeSound: ";
+			animals[i]->makeSound();
+		}
+		std::cout << std::endl;
+	}
 
-	std::cout << "\nCalling Destructors======================" << std::endl;
+	std::cout << "Calling Destructors======================" << std::endl;
 	for (size_t i = 0; i <= count; ++i)
 		delete animals[i];
+}
 
+int	main(void)
+{
+	testSubject();
+
+	std::cout << "\nCalling Cat Constructors=================" << std::endl;
+	Cat	cat;
+	Cat	copyCat(cat);
+
+	std::cout << "\nDisplay Cats=============================" << std::endl;
+	LOG(cat);
+	LOG(copyCat);
+
+	std::cout << "Change Cats Ideas========================" << std::endl;
+	std::cout << "[cat]Idea number 42" << std::endl;
+	LOG(cat.getIdea(42));
+	std::string	empty("testing copy...");
+	cat.setIdea(42, empty);
+	LOG(cat.getIdea(42));
+
+	std::cout << "[copyCat]Idea number 42" << std::endl;
+	LOG(copyCat.getIdea(42));
+
+	std::cout << "\nCalling Dog Constructors=================" << std::endl;
+	Dog	dog;
+	Dog	copyDog = dog;
+
+	std::cout << "\nDisplay Dogs=============================" << std::endl;
+	LOG(dog);
+	LOG(copyDog);
+
+	std::cout << "Change Dogs Ideas========================" << std::endl;
+	std::cout << "[dog]Idea number 42" << std::endl;
+	LOG(dog.getIdea(42));
+	empty = "testing assignment...";
+	dog.setIdea(42, empty);
+	LOG(dog.getIdea(42));
+
+	std::cout << "[copyDog]Idea number 42" << std::endl;
+	LOG(copyDog.getIdea(42));
+
+	std::cout << "\nCalling Destructors======================" << std::endl;
 	return(0);
 }

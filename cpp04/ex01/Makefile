@@ -6,7 +6,7 @@
 #    By: harndt <harndt@student.42sp.org.br>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/17 15:50:38 by harndt            #+#    #+#              #
-#    Updated: 2023/06/09 16:00:28 by harndt           ###   ########.fr        #
+#    Updated: 2023/06/12 15:14:38 by harndt           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,7 @@
 
 NAME		:=	brain
 CC			:=	c++
-CFLAGS		:=	-Wall -Wextra -Werror -std=c++98
+CFLAGS		:=	-Wall -Wextra -Werror -std=c++98 -g
 HEADERS		:=	./includes/
 SRCS		:=	./sources/main.cpp	./sources/Animal.cpp			\
 				./sources/Cat.cpp	./sources/Dog.cpp				\
@@ -60,4 +60,7 @@ fclean:		clean
 
 re:			fclean all
 
-.PHONY:		all clean fclean re
+v:
+			valgrind ./$(NAME)
+
+.PHONY:		all clean fclean re v
