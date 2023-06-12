@@ -6,7 +6,7 @@
 /*   By: harndt <harndt@student.42sp.org.br>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/06 11:52:30 by harndt            #+#    #+#             */
-/*   Updated: 2023/06/06 13:56:23 by harndt           ###   ########.fr       */
+/*   Updated: 2023/06/12 16:43:51 by harndt           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,10 @@
 // CONSTRUCTORS AND DESTRUCTORS
 // =============================================================================
 
+/**
+ * @brief Construct a new Cat:: Cat object
+ * 
+ */
 Cat::Cat(void) : Animal("Cat")
 {
 	if (SHOW_MSG == true)
@@ -25,6 +29,11 @@ Cat::Cat(void) : Animal("Cat")
 	return ;
 }
 
+/**
+ * @brief Construct a new Cat:: Cat object
+ * 
+ * @param src The Cat object to be copied.
+ */
 Cat::Cat(Cat const &src) : Animal(src)
 {
 	if (SHOW_MSG == true)
@@ -33,6 +42,10 @@ Cat::Cat(Cat const &src) : Animal(src)
 	return ;
 }
 
+/**
+ * @brief Destroy the Cat:: Cat object
+ * 
+ */
 Cat::~Cat(void)
 {
 	if (SHOW_MSG == true)
@@ -44,6 +57,12 @@ Cat::~Cat(void)
 // OPERATORS
 // =============================================================================
 
+/**
+ * @brief Overload for the '=' operator
+ * 
+ * @param rhs The right hand side varible to be assigned.
+ * @return Cat& A pointer to the assigned Cat object.
+ */
 Cat & Cat::operator = (Cat const &rhs)
 {
 	if (SHOW_MSG == true)
@@ -53,6 +72,13 @@ Cat & Cat::operator = (Cat const &rhs)
 	return (*this);
 }
 
+/**
+ * @brief Overload for the 'std::onstream <<' operator.
+ * 
+ * @param o Output stream
+ * @param i Input stream
+ * @return std::ostream& Reference to the output.
+ */
 std::ostream &operator << (std::ostream &o, Cat const &i)
 {
 	(void)i;
@@ -64,6 +90,10 @@ std::ostream &operator << (std::ostream &o, Cat const &i)
 // MEMBER FUNCTIONS
 // =============================================================================
 
+/**
+ * @brief Prints a string.
+ * 
+ */
 void	Cat::makeSound(void) const
 {
 	LOG("Meow~~");
