@@ -6,7 +6,7 @@
 /*   By: harndt <harndt@student.42sp.org.br>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/14 15:35:54 by harndt            #+#    #+#             */
-/*   Updated: 2023/06/15 16:46:41 by harndt           ###   ########.fr       */
+/*   Updated: 2023/06/15 20:01:50 by harndt           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -192,4 +192,20 @@ void	Bureaucrat::incrementGrade(void)
 	if (this->getGrade() == H_GRADE)
 		throw Bureaucrat::GradeTooHighException();
 	this->_grade--;
+}
+
+void	Bureaucrat::signForm(Form &form)
+{
+	if (form.getSigned())
+		return ;
+		
+	try
+	{
+		form.beSigned(*this);
+		LOG(this->getName() << " signed " << form.getName());
+	}
+	catch(Form::GradeTooLowException &e)
+	{
+		ERROR(this->getName() << " couldn't sign " << form.getName() << " because " << e.what() << ".");
+	}
 }

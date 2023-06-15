@@ -6,7 +6,7 @@
 /*   By: harndt <harndt@student.42sp.org.br>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/14 15:40:01 by harndt            #+#    #+#             */
-/*   Updated: 2023/06/15 17:16:22 by harndt           ###   ########.fr       */
+/*   Updated: 2023/06/15 20:01:45 by harndt           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 	[x] Create Bureaucrat::GradeTooLowException.
 	[x] Create tests on main.
 	[x] Documment code.
-	[ ] Implement beSigned(Bureaucrat const &b) to Form, it changes the status
+	[x] Implement beSigned(Bureaucrat const &b) to Form, it changes the status
 	when if the Bureaucrat's grade is high enough to sign it, if the grade is
 	too low throw a Form::GradeToLowException()
 	[ ] Implement signForm() to Bureaucratm, if the form is signed prints a 
@@ -121,14 +121,17 @@ void	testFormGradesLow(void)
 int	main(void)
 {
 	// std::cout << "\nForm Constructors ===========================" << std::endl;
-	// Form f;
+	Form f("Humberto", 32, 52);
+	Bureaucrat b("Doisberto", 1);
+	// f.beSigned(b);
+	b.signForm(f);
 	// Form f2("Humberto", 12, 13);
 	// Form f3(f2);
 
-	// LOG(f);
+	LOG(f);
 
-	testFormGradesHigh();
-	testFormGradesLow();
+	// testFormGradesHigh();
+	// testFormGradesLow();
 
 	// std::cout << "\nForm Destructors ===========================" << std::endl;
 	return (0);

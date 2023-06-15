@@ -6,7 +6,7 @@
 /*   By: harndt <harndt@student.42sp.org.br>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/15 15:32:32 by harndt            #+#    #+#             */
-/*   Updated: 2023/06/15 16:58:26 by harndt           ###   ########.fr       */
+/*   Updated: 2023/06/15 19:38:25 by harndt           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@
  */
 const char	*Form::GradeTooHighException::what(void) const throw()
 {
-	return "Grade is too high, highest grade is 1.";
+	return "Grade is too high.";
 }
 
 /**
@@ -37,7 +37,7 @@ const char	*Form::GradeTooHighException::what(void) const throw()
  */
 const char	*Form::GradeTooLowException::what(void) const throw()
 {
-	return "Grade is too low, lowest grade is 150.";
+	return "Grade is too low.";
 }
 
 // =============================================================================
@@ -191,4 +191,17 @@ int	Form::getGradeSign(void) const
 int	Form::getGradeExec(void) const
 {
 	return (this->_gradeExec);
+}
+
+/**
+ * @brief Changes the status of a Form to 'true'.
+ * 
+ * @param bureaucrat The object to check a Form.
+ */
+void	Form::beSigned(Bureaucrat &bureaucrat)
+{
+	if (bureaucrat.getGrade() > this->getGradeSign())
+		throw Form::GradeTooLowException();
+	else
+		this->_isSigned = true;
 }

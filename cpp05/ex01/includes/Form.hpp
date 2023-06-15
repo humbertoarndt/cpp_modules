@@ -6,7 +6,7 @@
 /*   By: harndt <harndt@student.42sp.org.br>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/15 15:23:26 by harndt            #+#    #+#             */
-/*   Updated: 2023/06/15 16:45:36 by harndt           ###   ########.fr       */
+/*   Updated: 2023/06/15 19:56:35 by harndt           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,8 @@
 // =============================================================================
 // CLASS
 // =============================================================================
+
+class Bureaucrat;
 
 class Form
 {
@@ -44,6 +46,7 @@ class Form
 		bool		getSigned(void) const;
 		int			getGradeSign(void) const;
 		int			getGradeExec(void) const;
+		void		beSigned(Bureaucrat &bureaucrat);
 
 		/* Throw Exceptions */
 		class	GradeTooHighException : public std::exception

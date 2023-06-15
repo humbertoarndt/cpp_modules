@@ -6,7 +6,7 @@
 /*   By: harndt <harndt@student.42sp.org.br>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/14 15:33:34 by harndt            #+#    #+#             */
-/*   Updated: 2023/06/15 16:20:24 by harndt           ###   ########.fr       */
+/*   Updated: 2023/06/15 19:59:02 by harndt           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,8 @@
 // CLASS
 // =============================================================================
 
+class Form;
+
 class Bureaucrat
 {
 	private:
@@ -51,6 +53,7 @@ class Bureaucrat
 		std::string		getName(void) const;
 		void			decrementGrade(void);
 		void			incrementGrade(void);
+		void			signForm(Form &form);
 
 		/*
 		How to create throw execptions in cpp
