@@ -6,13 +6,37 @@
 /*   By: harndt <harndt@student.42sp.org.br>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/14 15:35:54 by harndt            #+#    #+#             */
-/*   Updated: 2023/06/14 17:28:59 by harndt           ###   ########.fr       */
+/*   Updated: 2023/06/15 12:14:23 by harndt           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Bureaucrat.hpp"
 
 #define SHOW_MSG true
+
+// =============================================================================
+// EXCPTIONS
+// =============================================================================
+
+/**
+ * @brief Throws an exception when the '_grade' value is higher than 1.
+ * 
+ * @return const char* Exception message.
+ */
+const char	*Bureaucrat::GradeTooHighException::what(void) const throw()
+{
+	return "Grade is too high, highest grade is 1.";
+}
+
+/**
+ * @brief Throws an exception when the '_grade' value is lowest than 150.
+ * 
+ * @return const char* Exception message.
+ */
+const char	*Bureaucrat::GradeTooLowException::what(void) const throw()
+{
+	return "Grade is too low, lowest grade is 150.";
+}
 
 // =============================================================================
 // CONSTRUCTORS AND DESTRUCTOR
@@ -48,11 +72,15 @@ Bureaucrat::Bureaucrat(void)
  * @param name Bureaucrat's new name
  * @param grade Bureaucrat's new grade
  */
-Bureaucrat::Bureaucrat(std::string const &name, unsigned int grade)
+Bureaucrat::Bureaucrat(std::string const &name, int grade)
 {
 	if (SHOW_MSG == true)
 		LOG("⚙️ Parameter Constructor called");
 	const_cast<std::string &>(this->_name) = name;
+	if (grade < H_GRADE)
+		throw	Bureaucrat::GradeTooHighException();
+	else if (grade > L_GRADE)
+		throw	Bureaucrat::GradeTooLowException();
 	this->_grade = grade;
 	return ;
 }
@@ -114,7 +142,7 @@ Bureaucrat & Bureaucrat::operator = (Bureaucrat const &rhs)
 std::ostream &operator << (std::ostream &o, Bureaucrat const &i)
 {
 	(void)i;
-	o << "\n⚙️ Displaying Bureaucrat =========================" << std::endl;
+	o << "⚙️ Displaying Bureaucrat =====================" << std::endl;
 	o << "Name: " << i.getName() << std::endl;
 	o << "Grade: " << i.getGrade() << std::endl;
 	return (o);
@@ -127,9 +155,9 @@ std::ostream &operator << (std::ostream &o, Bureaucrat const &i)
 /**
  * @brief Gets the object's _grade.
  * 
- * @return unsigned int The object's _grade.
+ * @return int The object's _grade.
  */
-unsigned int	Bureaucrat::getGrade(void) const
+int	Bureaucrat::getGrade(void) const
 {
 	return (this->_grade);
 }
@@ -150,9 +178,9 @@ std::string	Bureaucrat::getName(void) const
  */
 void	Bureaucrat::decrementGrade(void)
 {
-	/* Implementar via regra */
-	if (this->getGrade() != L_GRADE)
-		this->_grade++;
+	if (this->getGrade() == L_GRADE)
+		throw Bureaucrat::GradeTooLowException();
+	this->_grade++;
 }
 
 /**
@@ -161,7 +189,7 @@ void	Bureaucrat::decrementGrade(void)
  */
 void	Bureaucrat::incrementGrade(void)
 {
-	/* Implementar via regra */
-	if (this->getGrade() != H_GRADE)
-		this->_grade--;
+	if (this->getGrade() == H_GRADE)
+		throw Bureaucrat::GradeTooHighException();
+	this->_grade--;
 }
