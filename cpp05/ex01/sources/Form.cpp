@@ -6,7 +6,7 @@
 /*   By: harndt <harndt@student.42sp.org.br>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/15 15:32:32 by harndt            #+#    #+#             */
-/*   Updated: 2023/06/15 19:38:25 by harndt           ###   ########.fr       */
+/*   Updated: 2023/06/19 10:26:14 by harndt           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -140,7 +140,7 @@ Form & Form::operator = (Form const &rhs)
 std::ostream &operator << (std::ostream &o, Form const &i)
 {
 	(void)i;
-	o << "\n📄 Displaying Bureaucrat =====================" << std::endl;
+	o << "\n📄 Displaying Form =====================" << std::endl;
 	o << "Name: " << i.getName() << std::endl;
 	o << "Signed: " << (i.getSigned() ? "True" : "False") << std::endl;
 	o << "Signature Grade: " << i.getGradeSign() << std::endl;

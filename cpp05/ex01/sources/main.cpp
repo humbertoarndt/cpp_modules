@@ -6,11 +6,11 @@
 /*   By: harndt <harndt@student.42sp.org.br>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/14 15:40:01 by harndt            #+#    #+#             */
-/*   Updated: 2023/06/15 20:01:45 by harndt           ###   ########.fr       */
+/*   Updated: 2023/06/19 10:29:03 by harndt           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Form.hpp"
+#include "AForm.hpp"
 
 /*
 	TODOS
@@ -22,7 +22,7 @@
 	[x] Implement beSigned(Bureaucrat const &b) to Form, it changes the status
 	when if the Bureaucrat's grade is high enough to sign it, if the grade is
 	too low throw a Form::GradeToLowException()
-	[ ] Implement signForm() to Bureaucratm, if the form is signed prints a 
+	[x] Implement signForm() to Bureaucratm, if the form is signed prints a 
 	message of succes, if not prints a message informing that the bureaucrat 
 	can't sign this form.
 	[ ] Study 'const' and 'this'
