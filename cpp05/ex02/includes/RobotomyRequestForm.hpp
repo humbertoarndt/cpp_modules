@@ -1,72 +1,47 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ShrubberyCreationForm.hpp                          :+:      :+:    :+:   */
+/*   RobotomyRequestForm.hpp                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: harndt <harndt@student.42sp.org.br>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/06/19 10:41:25 by harndt            #+#    #+#             */
-/*   Updated: 2023/06/21 14:33:29 by harndt           ###   ########.fr       */
+/*   Created: 2023/06/21 10:45:32 by harndt            #+#    #+#             */
+/*   Updated: 2023/06/21 13:48:25 by harndt           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #pragma once
 
 // =============================================================================
-// Includes
+// Inlcudes
 // =============================================================================
 
 #include "AForm.hpp"
-#include <fstream>
+#include <cstdlib>
+// #include <cstdlib>
+#include <ctime>
 
 // =============================================================================
 // Macros
 // =============================================================================
 
-#define SCF_SIGN_GRADE 145
-#define SCF_EXEC_GRADE 137
-#define SHRUBBERY \
-"\
-              * *\n\
-           *    *  *\n\
-      *  *    *     *  *\n\
-     *     *    *  *    *\n\
- * *   *    *    *    *   *\n\
- *     *  *    * * .#  *   *\n\
- *   *     * #.  .# *   *\n\
-  *     #.  #: # * *    *\n\
- *   * * #. ##       *\n\
-   *       ###\n\
-             ##\n\
-              ##.\n\
-              .##:\n\
-              :###\n\
-              ;###\n\
-            ,####.\n\
-VVVVVVVVVVV.######.VVVVVVVVV\n\
-"
+#define RRF_SIGN_GRADE 72
+#define RRF_EXEC_GRADE 45
 
 // =============================================================================
 // Class
 // =============================================================================
 
-class ShrubberyCreationForm : public AForm
+class RobotomyRequestForm : public AForm
 {
 	public:
 		/* Orthodox Canonical Form Methods */
-		ShrubberyCreationForm(void);
-		ShrubberyCreationForm(ShrubberyCreationForm const &src);
-		ShrubberyCreationForm(std::string const &target);
-		ShrubberyCreationForm &operator = (ShrubberyCreationForm const &rhs);
-		~ShrubberyCreationForm(void);
+		RobotomyRequestForm(void);
+		RobotomyRequestForm(RobotomyRequestForm const &src);
+		RobotomyRequestForm(std::string const &target);
+		RobotomyRequestForm &operator = (RobotomyRequestForm const &rhs);
+		~RobotomyRequestForm(void);
 
-		/* Throw Exceptions */
-		class	FileCreateErrorException : public std::exception
-		{
-			public:
-				const char *what(void) const throw();
-		};
-
-		/* Member Functions */
+		/* Member Function */
 		void	execute(Bureaucrat const &executor) const;
 };

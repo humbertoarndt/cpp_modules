@@ -6,7 +6,7 @@
 /*   By: harndt <harndt@student.42sp.org.br>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/19 10:42:39 by harndt            #+#    #+#             */
-/*   Updated: 2023/06/19 19:29:28 by harndt           ###   ########.fr       */
+/*   Updated: 2023/06/21 14:33:11 by harndt           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ ShrubberyCreationForm::ShrubberyCreationForm(void) :
 /**
  * @brief Construct a new Shrubbery Creation Form:: Shrubbery Creation Form object
  * 
- * @param src 
+ * @param src The object to be copied.
  */
 ShrubberyCreationForm::ShrubberyCreationForm(ShrubberyCreationForm const &src) : AForm(src)
 {
@@ -57,9 +57,15 @@ ShrubberyCreationForm::ShrubberyCreationForm(ShrubberyCreationForm const &src) :
 	this->setSign(src.getSign());
 	this->setGradeSign(src.getGradeSign());
 	this->setGradeExec(src.getGradeExec());
+	this->setTarget(src.getTarget());
 	return ;
 }
 
+/**
+ * @brief Construct a new Shrubbery Creation Form:: Shrubbery Creation Form object
+ * 
+ * @param target Target to create file with a tree.
+ */
 ShrubberyCreationForm::ShrubberyCreationForm(std::string const &target) :
 	AForm("Shrubbery Creation Form", SCF_SIGN_GRADE, SCF_EXEC_GRADE)
 {
@@ -100,6 +106,7 @@ ShrubberyCreationForm &ShrubberyCreationForm::operator = (ShrubberyCreationForm 
 		this->setSign(rhs.getSign());
 		this->setGradeSign(rhs.getGradeSign());
 		this->setGradeExec(rhs.getGradeExec());
+		this->setTarget(rhs.getTarget());
 	}
 	return (*this);
 }
@@ -108,6 +115,12 @@ ShrubberyCreationForm &ShrubberyCreationForm::operator = (ShrubberyCreationForm 
 // Member Functions
 // =============================================================================
 
+/**
+ * @brief When the executor have the required grades, creates a file with and
+ * writes an ASCII tree inside it.
+ * 
+ * @param executor A Bureaucrat object.
+ */
 void	ShrubberyCreationForm::execute(Bureaucrat const &executor) const
 {
 	std::string		filename;
@@ -120,6 +133,7 @@ void	ShrubberyCreationForm::execute(Bureaucrat const &executor) const
 		throw ShrubberyCreationForm::FileCreateErrorException();
 	outfile.open(filename.c_str());
 	outfile << SHRUBBERY;
+	LOG(filename << " created with success.");
 	outfile.close();
 	out.close();
 }
