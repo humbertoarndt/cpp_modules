@@ -6,7 +6,7 @@
 #    By: harndt <harndt@student.42sp.org.br>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/06/14 15:39:56 by harndt            #+#    #+#              #
-#    Updated: 2023/06/21 13:08:25 by harndt           ###   ########.fr        #
+#    Updated: 2023/06/21 18:05:24 by harndt           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,7 +20,7 @@ CFLAGS		:=	-Wall -Wextra -Werror -std=c++98 -g
 HEADERS		:=	./includes/
 SRCS		:=	./sources/main.cpp	./sources/Bureaucrat.cpp			\
 				./sources/AForm.cpp ./sources/ShrubberyCreationForm.cpp	\
-				./sources/RobotomyRequestForm.cpp
+				./sources/RobotomyRequestForm.cpp	./sources/PresidentialPardonForm.cpp
 
 OBJS		:=	$(SRCS:.cpp=.o)
 

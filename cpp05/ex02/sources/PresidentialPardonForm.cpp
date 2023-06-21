@@ -1,44 +1,44 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   RobotomyRequestForm.cpp                            :+:      :+:    :+:   */
+/*   PresidentialPardonForm.cpp                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: harndt <harndt@student.42sp.org.br>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/06/21 10:47:41 by harndt            #+#    #+#             */
-/*   Updated: 2023/06/21 18:13:58 by harndt           ###   ########.fr       */
+/*   Created: 2023/06/21 17:37:23 by harndt            #+#    #+#             */
+/*   Updated: 2023/06/21 18:02:49 by harndt           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "RobotomyRequestForm.hpp"
+#include "PresidentialPardonForm.hpp"
 
 #define SHOW_MSG true
 
 // =============================================================================
-// Constructors and Destructor
+// Constructor and Destructor
 // =============================================================================
 
 /**
- * @brief Construct a new Robotomy Request Form:: Robotomy Request Form object
+ * @brief Construct a new Presidential Pardon Form:: Presidential Pardon Form object
  * 
  */
-RobotomyRequestForm::RobotomyRequestForm(void) : 
-	AForm("Robotomy Request Form", RRF_SIGN_GRADE, RRF_EXEC_GRADE)
+PresidentialPardonForm::PresidentialPardonForm(void) :
+	AForm("Presidential Pardon Form", PPF_SIGN_GRADE, PPF_EXEC_GRADE)
 {
 	if (SHOW_MSG == true)
-		LOG("🤖📄 Default Constructor called");
+		LOG("👨‍💼📄 Default Constructor called");
 	return ;
 }
 
 /**
- * @brief Construct a new Robotomy Request Form:: Robotomy Request Form object
+ * @brief Construct a new Presidential Pardon Form:: Presidential Pardon Form object
  * 
  * @param src The object to be copied.
  */
-RobotomyRequestForm::RobotomyRequestForm(RobotomyRequestForm const &src) : AForm(src)
+PresidentialPardonForm::PresidentialPardonForm(PresidentialPardonForm const &src) : AForm(src)
 {
 	if (SHOW_MSG == true)
-		LOG("🤖📄 Copy Constructor called");
+		LOG("👨‍💼📄 Copy Constructor called");
 	this->setName(src.getName());
 	this->setSign(src.getSign());
 	this->setGradeSign(src.getGradeSign());
@@ -47,28 +47,23 @@ RobotomyRequestForm::RobotomyRequestForm(RobotomyRequestForm const &src) : AForm
 	return ;
 }
 
-/**
- * @brief Construct a new Robotomy Request Form:: Robotomy Request Form object
- * 
- * @param target Target to robotomize.
- */
-RobotomyRequestForm::RobotomyRequestForm(std::string const &target) : 
-	AForm("Robotomy Request Form", RRF_SIGN_GRADE, RRF_EXEC_GRADE)
+PresidentialPardonForm::PresidentialPardonForm(std::string const &target) :
+	AForm("Presidential Pardon Form", PPF_SIGN_GRADE, PPF_EXEC_GRADE)
 {
 	if (SHOW_MSG == true)
-		LOG("🤖📄 Parameter Constructor called");
+		LOG("👨‍💼📄 Parameter Constructor called");
 	this->setTarget(target);
 	return ;
 }
 
 /**
- * @brief Destroy the Robotomy Request Form:: Robotomy Request Form object
+ * @brief Destroy the Presidential Pardon Form:: Presidential Pardon Form object
  * 
  */
-RobotomyRequestForm::~RobotomyRequestForm(void)
+PresidentialPardonForm::~PresidentialPardonForm(void)
 {
 	if (SHOW_MSG == true)
-		LOG("🤖📄 Destructor called");
+		LOG("👨‍💼📄 Destructor called");
 	return ;
 }
 
@@ -80,43 +75,34 @@ RobotomyRequestForm::~RobotomyRequestForm(void)
  * @brief Overload for the '=' operator
  * 
  * @param rhs The right hand side varible to be assigned.
- * @return RobotomyRequestForm& A pointer to the assigned RobotomyRequestForm object.
+ * @return PresidentialPardonForm& A pointer to the assigned PresidentialPardonForm object.
  */
-RobotomyRequestForm & RobotomyRequestForm::operator = (RobotomyRequestForm const &rhs)
+PresidentialPardonForm &PresidentialPardonForm::operator = (PresidentialPardonForm const &rhs)
 {
 	if (SHOW_MSG == true)
-		LOG("🤖📄 Assignment operator called");
+		LOG("👨‍💼📄 Assignment operator called");
 	if (this != &rhs)
 	{
 		this->setName(rhs.getName());
 		this->setSign(rhs.getSign());
 		this->setGradeSign(rhs.getGradeSign());
 		this->setGradeExec(rhs.getGradeExec());
-		this->setTarget(rhs.getTarget());
+		this->setSign(rhs.getSign());
 	}
 	return (*this);
 }
 
 // =============================================================================
-// Member Functions
+// Member Function
 // =============================================================================
 
 /**
- * @brief When the executor have the required grades, make some drilling noises.
- * Then informs that the '_target' has been robotomized successfully 50% of 
- * time. Otherwise, informs that he robotomy failed.
+ * @brief Pardons a President.
  * 
  * @param executor A Bureaucrat object.
  */
-void	RobotomyRequestForm::execute(Bureaucrat const &executor) const
+void	PresidentialPardonForm::execute(Bureaucrat const &executor) const
 {
 	AForm::execute(executor);
-	LOG("* some drilling noise *");
-	std::srand(std::time(0));
-	if (std::rand() % 2)
-	{
-		LOG(this->getTarget() << " has been robotomized successfully.");
-	}
-	else
-		LOG("Robotomization failed on " << this->getTarget());
+	LOG(this->getName() << " has been pardoned by Zaphod Beeblebrox");
 }
