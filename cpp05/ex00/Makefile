@@ -6,7 +6,7 @@
 #    By: harndt <harndt@student.42sp.org.br>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/06/14 15:39:56 by harndt            #+#    #+#              #
-#    Updated: 2023/06/14 16:15:53 by harndt           ###   ########.fr        #
+#    Updated: 2023/06/27 14:51:36 by harndt           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -42,7 +42,7 @@ all:		$(NAME)
 
 $(NAME):	$(OBJS)
 			@echo "$(WHT)Compiling BUREAUCRAT...$(EOC)"
-			@$(CC) $(OBJS) -o $@
+			@$(CC) $(OBJS) $(CFLAGS) -o $@
 			@echo "$(GREEN)BUREAUCRAT build completed.$(EOC)"
 
 clean:

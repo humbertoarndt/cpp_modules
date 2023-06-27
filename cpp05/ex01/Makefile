@@ -6,7 +6,7 @@
 #    By: harndt <harndt@student.42sp.org.br>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/06/14 15:39:56 by harndt            #+#    #+#              #
-#    Updated: 2023/06/15 16:11:01 by harndt           ###   ########.fr        #
+#    Updated: 2023/06/27 14:51:31 by harndt           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -43,7 +43,7 @@ all:		$(NAME)
 
 $(NAME):	$(OBJS)
 			@echo "$(WHT)Compiling FORM...$(EOC)"
-			@$(CC) $(OBJS) -o $@
+			@$(CC) $(OBJS) $(CFLAGS) -o $@
 			@echo "$(GREEN)FORM build completed.$(EOC)"
 
 clean:
