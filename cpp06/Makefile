@@ -42,7 +42,7 @@ all:		$(NAME)
 
 $(NAME):	$(OBJS)
 			@echo "$(WHT)Compiling ScalarConverter...$(EOC)"
-			@$(CC) $(OBJS) -o $@
+			@$(CC) $(OBJS) $(CFLAGS) -o $@
 			@echo "$(GREEN)ScalarConverter build completed.$(EOC)"
 
 clean:
