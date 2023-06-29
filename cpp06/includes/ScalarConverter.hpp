@@ -6,7 +6,7 @@
 /*   By: harndt <harndt@student.42sp.org.br>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/26 16:22:03 by harndt            #+#    #+#             */
-/*   Updated: 2023/06/26 16:46:11 by harndt           ###   ########.fr       */
+/*   Updated: 2023/06/29 18:49:37 by harndt           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,10 @@
 class ScalarConverter
 {
 	private:
+		/* Orthodox Canonical Form Methods */
 		ScalarConverter(void);
+		ScalarConverter(ScalarConverter const &src);
+		ScalarConverter &operator = (ScalarConverter const &rhs);
 		~ScalarConverter(void);
 
 	public:
