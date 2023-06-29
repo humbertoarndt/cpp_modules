@@ -6,7 +6,7 @@
 /*   By: harndt <harndt@student.42sp.org.br>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/21 17:37:23 by harndt            #+#    #+#             */
-/*   Updated: 2023/06/22 15:44:03 by harndt           ###   ########.fr       */
+/*   Updated: 2023/06/29 18:44:05 by harndt           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,11 @@ PresidentialPardonForm::PresidentialPardonForm(PresidentialPardonForm const &src
 	return ;
 }
 
+/**
+ * @brief Construct a new Presidential Pardon Form:: Presidential Pardon Form object
+ * 
+ * @param target Target to pardon.
+ */
 PresidentialPardonForm::PresidentialPardonForm(std::string const &target) :
 	AForm("Presidential Pardon Form", PPF_SIGN_GRADE, PPF_EXEC_GRADE)
 {
