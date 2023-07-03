@@ -6,7 +6,7 @@
 /*   By: harndt <harndt@student.42sp.org.br>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/06 11:52:30 by harndt            #+#    #+#             */
-/*   Updated: 2023/06/12 16:43:23 by harndt           ###   ########.fr       */
+/*   Updated: 2023/07/03 19:55:15 by harndt           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,7 +82,9 @@ Cat & Cat::operator = (Cat const &rhs)
 		LOG("🐈 Assignment operator called");
 	if (this != &rhs)
 	{
+		LOG("🧠 Deleted");
 		_type = rhs.getType();
+		delete this->_brain;
 		_brain = new Brain(*rhs._brain);
 	}
 	return (*this);
