@@ -6,7 +6,7 @@
 /*   By: harndt <harndt@student.42sp.org.br>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/17 15:25:41 by harndt            #+#    #+#             */
-/*   Updated: 2023/07/03 19:58:08 by harndt           ###   ########.fr       */
+/*   Updated: 2023/07/04 11:14:07 by harndt           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,7 +76,9 @@ int	main(void)
 
 	std::cout << "\nCalling Cat Constructors=================" << std::endl;
 	Cat	cat;
+	Cat	cat2;
 	Cat	copyCat(cat);
+	cat = cat2;
 
 	std::cout << "\nDisplay Cats=============================" << std::endl;
 	LOG(cat);
@@ -94,7 +96,9 @@ int	main(void)
 
 	std::cout << "\nCalling Dog Constructors=================" << std::endl;
 	Dog	dog;
+	Dog	dog2;
 	Dog	copyDog = dog;
+	dog = dog2;
 
 	std::cout << "\nDisplay Dogs=============================" << std::endl;
 	LOG(dog);

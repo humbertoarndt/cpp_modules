@@ -6,7 +6,7 @@
 /*   By: harndt <harndt@student.42sp.org.br>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/06 13:44:46 by harndt            #+#    #+#             */
-/*   Updated: 2023/07/03 19:55:20 by harndt           ###   ########.fr       */
+/*   Updated: 2023/07/04 11:13:41 by harndt           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,7 +82,6 @@ Dog & Dog::operator = (Dog const &rhs)
 		LOG("🐕 Assignment operator called")
 	if (this != &rhs)
 	{
-		LOG("🧠 Deleted")
 		_type = rhs.getType();
 		delete this->_brain;
 		_brain = new Brain(*rhs._brain);
