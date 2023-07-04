@@ -6,7 +6,7 @@
 #    By: harndt <harndt@student.42sp.org.br>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/17 15:50:38 by harndt            #+#    #+#              #
-#    Updated: 2023/06/14 15:41:54 by harndt           ###   ########.fr        #
+#    Updated: 2023/07/04 11:00:19 by harndt           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -45,7 +45,7 @@ all:		$(NAME)
 
 $(NAME):	$(OBJS)
 			@echo "$(WHT)Compiling BRAIN...$(EOC)"
-			@$(CC) $(OBJS) -o $@
+			@$(CC) $(OBJS) $(CFLAGS) -o $@
 			@echo "$(GREEN)BRAIN build completed.$(EOC)"
 
 clean:

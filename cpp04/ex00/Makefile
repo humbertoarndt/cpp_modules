@@ -6,7 +6,7 @@
 #    By: harndt <harndt@student.42sp.org.br>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/17 15:50:38 by harndt            #+#    #+#              #
-#    Updated: 2023/06/07 15:30:12 by harndt           ###   ########.fr        #
+#    Updated: 2023/07/04 11:00:24 by harndt           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -44,7 +44,7 @@ all:		$(NAME)
 
 $(NAME):	$(OBJS)
 			@echo "$(WHT)Compiling ANIMAL...$(EOC)"
-			@$(CC) $(OBJS) -o $@
+			@$(CC) $(OBJS) $(CFLAGS) -o $@
 			@echo "$(GREEN)ANIMAL build completed.$(EOC)"
 
 clean:
