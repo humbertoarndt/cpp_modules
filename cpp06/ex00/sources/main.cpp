@@ -6,7 +6,7 @@
 /*   By: harndt <harndt@student.42sp.org.br>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/26 16:30:23 by harndt            #+#    #+#             */
-/*   Updated: 2023/07/04 16:19:16 by harndt           ###   ########.fr       */
+/*   Updated: 2023/07/04 18:12:13 by harndt           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,8 @@
 
 int	main(int argc, char **argv)
 {
+	// ScalarConverter foo; // Static Class, so this don't work
+	
 	if (argc != 2)
 	{
 		ERROR(">USAGE: ./convert <literal>");

@@ -6,7 +6,7 @@
 /*   By: harndt <harndt@student.42sp.org.br>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/26 16:22:03 by harndt            #+#    #+#             */
-/*   Updated: 2023/07/04 16:47:50 by harndt           ###   ########.fr       */
+/*   Updated: 2023/07/04 17:33:07 by harndt           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,27 +73,22 @@ class ScalarConverter
 		/* Int conversion */
 		static void	convert_to_int(const std::string &str);
 		static bool	is_overflow(const std::string &str);
-		static void	int_to_char(int nb);
 		
 		/* Float conversion */
 		static void	convert_to_float(const std::string &str);
-		static void	float_to_char(float nb);
-		static void	float_to_int(float nb);
 		
 		/* Double conversion */
 		static void	convert_to_double(const std::string &str);
-		static void	double_to_char(double nb);
-		static void	double_to_int(double nb);
 
 		/* Print functions */
 		static void	print_char(char c);
-		// static void	print_int(int d);
-		// static void	print_float(float f);
-		// static void	print_double(double d);
-		// static void	print_impossible(char c);
+		static void	print_int(int d);
+		static void	print_float(float f);
+		static void	print_double(double d);
+		static void	print_impossible(const std::string type);
 		
-		/* Invalid conversion */
-		static void	invalid_conversion(void);
+		/* Impossible conversion */
+		static void	impossible_conversion(void);
 
 	public:
 		static void	convert(const std::string str);

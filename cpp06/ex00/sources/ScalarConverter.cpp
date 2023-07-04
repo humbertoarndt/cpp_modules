@@ -6,7 +6,7 @@
 /*   By: harndt <harndt@student.42sp.org.br>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/26 16:23:01 by harndt            #+#    #+#             */
-/*   Updated: 2023/07/04 16:50:08 by harndt           ###   ########.fr       */
+/*   Updated: 2023/07/04 18:21:34 by harndt           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -164,7 +164,9 @@ bool	ScalarConverter::is_int(const std::string &str)
  */
 bool	ScalarConverter::is_float(const std::string &str)
 {
-	if (str.find('f') == std::string::npos)
+	size_t dlength = str.length() - 1;
+
+	if (str.at(dlength) != 'f')
 		return (false);
 	if (is_infinity(str) == FLOAT)
 		return (true);
@@ -221,36 +223,15 @@ int	ScalarConverter::get_type(const std::string str)
  */
 void	ScalarConverter::convert_to_char(const std::string &str)
 {
-	LOG("> char:\t\t" << str[0]);
-	LOG("> int:\t\t" << static_cast<int>(str[0]));
-	LOG(std::fixed << std::setprecision(1) << "> float:\t" << static_cast<float>(str[0]) << "f");
-	LOG(std::fixed << std::setprecision(1) << "> double:\t" << static_cast<double>(str[0]));
+	print_char(str[0]);
+	print_int(static_cast<int>(str[0]));
+	print_float(static_cast<float>(str[0]));
+	print_double(static_cast<double>(str[0]));
 }
 
 // =============================================================================
 // Int conversion
 // =============================================================================
-
-/**
- * @brief Converts a integer into char.
- * 
- * @param nb The integer to convert.
- */
-void	ScalarConverter::int_to_char(int nb)
-{
-	if (nb < LimitsChar::min() || nb > LimitsChar::max())
-	{
-		LOG("> char:\t\timpossible");
-	}
-	else if (std::isprint(nb))
-	{
-		LOG("> char:\t\t" << static_cast<char>(nb));
-	}
-	else
-	{
-		LOG("> char:\t\tNon displayable");
-	}
-}
 
 /**
  * @brief Checks if the number received as input doesn't overflow.
@@ -265,10 +246,10 @@ bool	ScalarConverter::is_overflow(const std::string &str)
 	
 	if (of >= LimitsInt::min() && of <= LimitsInt::max())
 		return (true);
-	LOG("> char:\t\timpossible");
-	LOG("> int:\t\timpossible");
-	LOG(std::fixed << std::setprecision(1) << "> float:\t" << static_cast<float>(of) << "f");
-	LOG(std::fixed << std::setprecision(1) << "> double:\t" << static_cast<double>(of));
+	print_impossible("char");
+	print_impossible("int");
+	print_float(static_cast<float>(of));
+	print_double(static_cast<double>(of));
 	return (false);
 }
 
@@ -283,53 +264,18 @@ void	ScalarConverter::convert_to_int(const std::string &str)
 		return ;
 	int	nb = std::atoi(str.c_str());
 	
-	int_to_char(nb);
-	LOG("> int:\t\t" << nb);
-	LOG(std::fixed << std::setprecision(1) << "> float:\t" << static_cast<float>(nb) << "f");
-	LOG(std::fixed << std::setprecision(1) << "> double:\t" << static_cast<double>(nb));
+	if (nb < LimitsChar::min() || nb > LimitsChar::max())
+		print_impossible("char");
+	else
+		print_char(static_cast<char>(nb));
+	print_int(nb);
+	print_float(static_cast<float>(nb));
+	print_double(static_cast<double>(nb));
 }
 
 // =============================================================================
 // Float conversion
 // =============================================================================
-
-/**
- * @brief Converts float to char;
- * 
- * @param nb The float to be converted.
- */
-void	ScalarConverter::float_to_char(float nb)
-{
-	if (nb < LimitsChar::min() || nb > LimitsChar::max() || std::isnan(nb) || std::isinf(nb))
-	{
-		LOG("> char:\t\timpossible");
-	}
-	else if (std::isprint(nb))
-	{
-		LOG("> char:\t\t" << static_cast<char>(nb));
-	}
-	else
-	{
-		LOG("> char:\t\tNon displayable");
-	}
-}
-
-/**
- * @brief Converts float to int;
- * 
- * @param nb The float to be converted.
- */
-void	ScalarConverter::float_to_int(float nb)
-{
-	if (nb < LimitsInt::min() || nb > LimitsInt::max() || std::isnan(nb) || std::isinf(nb))
-	{
-		LOG("> int:\t\timpossible");
-	}
-	else
-	{
-		LOG("> int:\t\t" << static_cast<int>(nb));
-	}
-}
 
 /**
  * @brief Converts the user's input into float.
@@ -340,53 +286,22 @@ void	ScalarConverter::convert_to_float(const std::string &str)
 {
 	float	nb = std::strtof(str.c_str(), NULL);
 
-	float_to_char(nb);
-	float_to_int(nb);
-	LOG(std::fixed << std::setprecision(1) << "> float:\t" << nb << "f");
-	LOG(std::fixed << std::setprecision(1) << "> double:\t" << static_cast<double>(nb));
+	if (nb < LimitsChar::min() || nb > LimitsChar::max() || std::isnan(nb) || std::isinf(nb))
+		print_impossible("char");
+	else
+		print_char(static_cast<char>(nb));
+	
+	if (nb < LimitsInt::min() || nb > LimitsInt::max() || std::isnan(nb) || std::isinf(nb))
+		print_impossible("int");
+	else
+		print_int(static_cast<int>(nb));
+	print_float(nb);
+	print_double(static_cast<double>(nb));
 }
 
 // =============================================================================
 // Double conversion
 // =============================================================================
-
-/**
- * @brief Converts double to char;
- * 
- * @param nb The double to be converted.
- */
-void	ScalarConverter::double_to_char(double nb)
-{
-	if (nb < LimitsChar::min() || nb > LimitsChar::max() || std::isnan(nb) || std::isinf(nb))
-	{
-		LOG("> char:\t\timpossible");
-	}
-	else if (std::isprint(nb))
-	{
-		LOG("> char:\t\t" << static_cast<char>(nb));
-	}
-	else
-	{
-		LOG("> char:\t\tNon displayable");
-	}
-}
-
-/**
- * @brief Converts double to int;
- * 
- * @param nb The double to be converted.
- */
-void	ScalarConverter::double_to_int(double nb)
-{
-	if (nb < LimitsInt::min() || nb > LimitsInt::max() || std::isnan(nb) || std::isinf(nb))
-	{
-		LOG("> int:\t\timpossible");
-	}
-	else
-	{
-		LOG("> int:\t\t" << static_cast<int>(nb));
-	}
-}
 
 /**
  * @brief Converts the user's input into double.
@@ -397,28 +312,30 @@ void	ScalarConverter::convert_to_double(const std::string &str)
 {
 	double	nb = std::strtod(str.c_str(), NULL);
 
-	double_to_char(nb);
-	double_to_int(nb);
-	LOG(std::fixed << std::setprecision(1) << "> float:\t" << static_cast<float>(nb) << "f");
-	LOG(std::fixed << std::setprecision(1) << "> double:\t" << nb);
-}
-
-/**
- * @brief Prints a message to when an input can't be conveted.
- * 
- */
-void	ScalarConverter::invalid_conversion(void)
-{
-	LOG("> char:\t\timpossible");
-	LOG("> int:\t\timpossible");
-	LOG("> float:\timpossible");
-	LOG("> double:\timpossible");
+	if (nb < LimitsChar::min() || nb > LimitsChar::max() || std::isnan(nb) || std::isinf(nb))
+		print_impossible("char");
+	else
+		print_char(static_cast<char>(nb));
+	if (nb < LimitsInt::min() || nb > LimitsInt::max() || std::isnan(nb) || std::isinf(nb))
+		print_impossible("int");
+	else
+		print_int(static_cast<int>(nb));
+	if (nb < LimitsFloat::min() || nb > LimitsFloat::max())
+		print_impossible("float");
+	else
+		print_float(static_cast<float>(nb));
+	print_double(nb);
 }
 
 // =============================================================================
 // Print functions
 // =============================================================================
 
+/**
+ * @brief Prints a char.
+ * 
+ * @param c The char to be printed;
+ */
 void	ScalarConverter::print_char(char c)
 {
 	if (std::isprint(c))
@@ -426,13 +343,66 @@ void	ScalarConverter::print_char(char c)
 		LOG("char: '" << c << "'");
 	}
 	else
+	{
 		LOG("char: Non displayable");
+	}
 }
-// void	ScalarConverter::print_int(int d);
-// void	ScalarConverter::print_float(float f);
-// void	ScalarConverter::print_double(double d);
-// // void	ScalarConverter::print_impossible(char c);
 
+/**
+ * @brief Prints an int.
+ * 
+ * @param d The int to be printed.
+ */
+void	ScalarConverter::print_int(int d)
+{
+	LOG("int: " << d);
+}
+
+/**
+ * @brief Prints a float.
+ * 
+ * @param f The float to be printed.
+ */
+void	ScalarConverter::print_float(float f)
+{
+	LOG("float: " << std::fixed << std::setprecision(1) << f << "f");
+}
+
+/**
+ * @brief Prints a double.
+ * 
+ * @param d The double to be printed.
+ */
+void	ScalarConverter::print_double(double d)
+{
+	LOG("double: " << std::fixed << std::setprecision(1) << d);
+}
+
+/**
+ * @brief Prints a message when is impossible to print a conversion.
+ * 
+ * @param type The imposible tipe to convert.
+ */
+void	ScalarConverter::print_impossible(const std::string type)
+{
+	LOG(type << ": impossible");
+}
+
+/**
+ * @brief Prints a message to when an input can't be conveted.
+ * 
+ */
+void	ScalarConverter::impossible_conversion(void)
+{
+	print_impossible("char");
+	print_impossible("int");
+	print_impossible("float");
+	print_impossible("double");
+}
+
+// =============================================================================
+// Convert function
+// =============================================================================
 
 /**
  * @brief Identify the type of the user's input and converts it into char,
@@ -459,6 +429,6 @@ void	ScalarConverter::convert(const std::string str)
 			convert_to_double(str);
 			break;
 		default :
-			invalid_conversion();
+			impossible_conversion();
 	}
 }

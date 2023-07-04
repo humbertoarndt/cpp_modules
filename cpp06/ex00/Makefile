@@ -6,7 +6,7 @@
 #    By: harndt <harndt@student.42sp.org.br>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/06/14 15:39:56 by harndt            #+#    #+#              #
-#    Updated: 2023/07/03 17:46:15 by harndt           ###   ########.fr        #
+#    Updated: 2023/07/04 18:15:32 by harndt           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,7 @@
 
 NAME		:=	convert
 CC			:=	c++
-CFLAGS		:=	-Wall -Werror -Wextra -std=c++98 -g
+CFLAGS		:=	-Wall -Werror -Wextra -std=c++98
 HEADERS		:=	./includes/
 SRCS		:=	./sources/main.cpp	./sources/ScalarConverter.cpp
 
@@ -57,12 +57,4 @@ fclean:		clean
 
 re:			fclean all
 
-display:	re
-			clear
-			@echo ">Executing ./$(NAME)"
-			./$(NAME) h
-
-v:			all
-			valgrind ./$(NAME)
-
-.PHONY:		all clean fclean re v
+.PHONY:		all clean fclean re
