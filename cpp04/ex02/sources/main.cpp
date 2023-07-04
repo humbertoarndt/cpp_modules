@@ -6,7 +6,7 @@
 /*   By: harndt <harndt@student.42sp.org.br>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/17 15:25:41 by harndt            #+#    #+#             */
-/*   Updated: 2023/07/04 16:21:29 by harndt           ###   ########.fr       */
+/*   Updated: 2023/07/04 16:23:02 by harndt           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,6 @@ void	testSubject(void)
 
 int	main(void)
 {
-
 	// AAnimal	test; // THIS SHOULD NOT COMPILE!!!
 
 	testSubject();
