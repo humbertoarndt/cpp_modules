@@ -6,7 +6,7 @@
 /*   By: harndt <harndt@student.42sp.org.br>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/26 16:22:03 by harndt            #+#    #+#             */
-/*   Updated: 2023/07/04 17:33:07 by harndt           ###   ########.fr       */
+/*   Updated: 2023/07/05 20:07:36 by harndt           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,4 +92,16 @@ class ScalarConverter
 
 	public:
 		static void	convert(const std::string str);
+
+	/*
+	When should static_cast, dynamic_cast, const_cast, and reinterpret_cast 
+	be used?
+	<static_cast>
+	This is used for the normal/ordinary type conversion. This is also the 
+	cast responsible for implicit type conversion and can also be called 
+	explicitly. You should use it in cases like converting float to int, char 
+	to int, etc.
+
+	https://stackoverflow.com/questions/332030/when-should-static-cast-dynamic-cast-const-cast-and-reinterpret-cast-be-used
+	*/
 };
