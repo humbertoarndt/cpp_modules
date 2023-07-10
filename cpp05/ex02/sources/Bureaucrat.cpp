@@ -6,7 +6,7 @@
 /*   By: harndt <harndt@student.42sp.org.br>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/14 15:35:54 by harndt            #+#    #+#             */
-/*   Updated: 2023/06/19 11:24:03 by harndt           ###   ########.fr       */
+/*   Updated: 2023/07/10 19:33:21 by harndt           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -207,5 +207,23 @@ void	Bureaucrat::signForm(AForm &form)
 	catch(AForm::GradeTooLowException &e)
 	{
 		ERROR(this->getName() << " couldn't sign " << form.getName() << " because " << e.what() << ".");
+	}
+}
+
+/**
+ * @brief Checks if a Bureaucrat has grade high enough to execute an AFomr object.
+ * 
+ * @param form The AForm object to be executed.
+ */
+void	Bureaucrat::executeForm(AForm const &form) const
+{
+	try
+	{
+		form.execute(*this);
+		LOG(this->getName() << " executed " << form.getName());
+	}
+	catch (AForm::GradeTooLowException &e)
+	{
+		LOG(this->getName() << " couldn't execute " << form.getName() << " since " << e.what());
 	}
 }

@@ -6,7 +6,7 @@
 /*   By: harndt <harndt@student.42sp.org.br>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/14 15:40:01 by harndt            #+#    #+#             */
-/*   Updated: 2023/06/21 18:07:51 by harndt           ###   ########.fr       */
+/*   Updated: 2023/07/10 19:53:09 by harndt           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,28 +27,65 @@
 int	main(void)
 {
 	std::cout << "\nForm Constructors ===========================" << std::endl;
-	/* ShrubberyCreationForm testing simple */
-	ShrubberyCreationForm form1("1berto");
-	Bureaucrat b1("Humberto", 1);
+	ShrubberyCreationForm shrubbery("1berto");
+	Bureaucrat b1("Humberto", 138);
+
+	RobotomyRequestForm robotomy("2berto");
+	Bureaucrat b2("Doisberto", 46);
+
+	PresidentialPardonForm presidential("3berto");
+	Bureaucrat b3("Trê3berto", 6);
+	LOG("");
+	
+	try 
+	{
+		LOG(">Try/Catch Block");
+		b1.signForm(shrubbery);
+		b1.signForm(shrubbery);
+		b1.executeForm(shrubbery);
+		LOG("");
+	}
+	catch (AForm::GradeTooLowException &e)
+	{
+		ERROR(e.what());
+	}
+
+	b1.incrementGrade();
+	b1.signForm(shrubbery);
+	b1.executeForm(shrubbery);
 
 	/* RobotomyRequestForm testing simple */
-	RobotomyRequestForm form2("2berto");
-	Bureaucrat b2("Doisberto", 1);
+	try 
+	{
+		LOG("\n>Try/Catch Block");
+		b2.signForm(robotomy);
+		b2.executeForm(robotomy);
+		LOG("");
+	}
+	catch (AForm::GradeTooLowException &e)
+	{
+		ERROR(e.what());
+	}
 
-	/* PresidentialPardonForm testing simple */
-	PresidentialPardonForm form3("3berto");
-	Bureaucrat b3("Trê3berto", 1);
+	b2.incrementGrade();
+	b2.signForm(robotomy);
+	b2.executeForm(robotomy);
 
-	/* Signing forms */
-	form1.beSigned(b1);
-	form2.beSigned(b2);
-	form3.beSigned(b3);
+	try 
+	{
+		LOG("\n>Try/Catch Block");
+		b3.signForm(presidential);
+		b3.executeForm(presidential);
+		LOG("");
+	}
+	catch (AForm::GradeTooLowException &e)
+	{
+		ERROR(e.what());
+	}
 
-	/* Execute form functions */
-	LOG(" ");
-	form1.execute(b1);
-	form2.execute(b2);
-	form3.execute(b3);
+	b3.incrementGrade();
+	b3.signForm(presidential);
+	b3.executeForm(presidential);
 
 	std::cout << "\nForm Destructors ===========================" << std::endl;
 	return (0);

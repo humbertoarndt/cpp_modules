@@ -6,7 +6,7 @@
 /*   By: harndt <harndt@student.42sp.org.br>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/14 15:33:34 by harndt            #+#    #+#             */
-/*   Updated: 2023/06/19 10:23:36 by harndt           ###   ########.fr       */
+/*   Updated: 2023/07/10 19:33:39 by harndt           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,7 @@ class Bureaucrat
 		void			decrementGrade(void);
 		void			incrementGrade(void);
 		void			signForm(AForm &form);
+		void			executeForm(AForm const &form) const;
 
 		/*
 		How to create throw execptions in cpp
