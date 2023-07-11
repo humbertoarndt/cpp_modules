@@ -6,7 +6,7 @@
 /*   By: harndt <harndt@student.42sp.org.br>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/04 15:24:27 by harndt            #+#    #+#             */
-/*   Updated: 2023/04/10 18:46:02 by harndt           ###   ########.fr       */
+/*   Updated: 2023/07/11 11:31:48 by harndt           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -166,7 +166,7 @@ void	PhoneBook::prompt_search(void)
 		_contacts[ft_stoi(input) - 1].display();
 	else
 	{
-		std::system("clear");
+		// std::system("clear");
 		return ;
 	}
 }

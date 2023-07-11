@@ -5,20 +5,20 @@
 #                                                     +:+ +:+         +:+      #
 #    By: harndt <harndt@student.42sp.org.br>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2023/04/10 12:12:29 by harndt            #+#    #+#              #
-#    Updated: 2023/07/11 11:38:11 by harndt           ###   ########.fr        #
+#    Created: 2023/07/10 11:49:07 by harndt            #+#    #+#              #
+#    Updated: 2023/07/11 11:33:33 by harndt           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-# ------------------------------------------------------------------------------
+# ==============================================================================
 # VARIABLES
-# ------------------------------------------------------------------------------
+# ==============================================================================
 
-NAME		:=	zombie
+NAME		:=	a.out
 CC			:=	c++
 CFLAGS		:=	-Wall -Werror -Wextra -std=c++98
-HEADERS		:=	./Zombie.hpp
-SRCS		:=	./main.cpp	./Zombie.cpp	./newZombie.cpp	./randomChump.cpp
+HEADERS		:=	./includes/
+SRCS		:=	./sources/main.cpp
 
 OBJS		:=	$(SRCS:.cpp=.o)
 
@@ -54,9 +54,9 @@ ECHO = $(PRINT) $(ITALIC_GRAY)"[$(P)%]\t"
 
 all:		$(NAME)
 
-%.o:	%.cpp $(HEADERS)
+%.o:	%.cpp
 			@$(ECHO) Compiling $< $(EOC)
-			@$(CC) $(CFLAGS) -c $< -o $@
+			@$(CC) $(CFLAGS) -I $(HEADERS) -c $< -o $@
 
 $(NAME):	$(OBJS)
 			@$(ECHO) $(NAME) created! $(EOC)
@@ -71,8 +71,5 @@ fclean:		clean
 			@$(PRINT) $(ITALIC_MAGENTA)$(NAME)" deleted"$(EOC)
 
 re:			fclean all
-
-test:		all
-			./$(NAME) "humberto doisberto tresBERTO QUATROberto"
 
 .PHONY:		all clean fclean re

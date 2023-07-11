@@ -6,7 +6,7 @@
 /*   By: harndt <harndt@student.42sp.org.br>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/24 14:39:51 by harndt            #+#    #+#             */
-/*   Updated: 2023/05/09 12:23:29 by harndt           ###   ########.fr       */
+/*   Updated: 2023/07/11 11:43:25 by harndt           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -230,8 +230,8 @@ Fixed	Fixed::operator / (const Fixed &rhs) const
 // =============================================================================
 // INCREMENTE AND DECREMENT OPERATORS OVERLOAD
 // =============================================================================
-/
-**
+
+/**
  * @brief Overload for the '++' operator.
  * 
  * @return Fixed& A pointer to the object after '_raw' is incremented.

@@ -6,7 +6,7 @@
 #    By: harndt <harndt@student.42sp.org.br>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/04/17 11:19:30 by harndt            #+#    #+#              #
-#    Updated: 2023/04/17 11:20:33 by harndt           ###   ########.fr        #
+#    Updated: 2023/07/11 11:39:23 by harndt           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,35 +25,49 @@ OBJS		:=	$(SRCS:.cpp=.o)
 # COLORS
 # ==============================================================================
 
-GREEN		:=	\033[1;32m
-RED			:=	\033[1;31m
-WHT			:=	\033[1;37m
-EOC			:=	\033[1;0m
+EOC				:=	"\e[0m"
+ITALIC_GRAY		:=	"\e[3;37m"
+ITALIC_MAGENTA	:=	"\e[1;3;35m"
+
+# ==============================================================================
+# BUILD PERCENTAGE
+# ==============================================================================
+
+ifndef ECHO
+	T := $(shell $(MAKE) $(MAKECMDGOALS) -n ECHO="counter" | grep -c "counter")
+endif
+
+ifeq ($(firstword $(MAKECMDGOALS)), $(shell echo re))
+	T := $(shell expr $(words $(OBJS)) + 1)
+endif
+
+PRINT	:=	$(shell which echo) -e
+N := x
+C = $(words $(N))$(eval N := x $(N))
+P = "`expr $(C) '*' 100 / $(T)`"
+ECHO = $(PRINT) $(ITALIC_GRAY)"[$(P)%]\t"
 
 # ==============================================================================
 # RECIPES
 # ==============================================================================
 
 all:		$(NAME)
-			clear
 
-%.o:		%.cpp
+%.o:	%.cpp
+			@$(ECHO) Compiling $< $(EOC)
 			@$(CC) $(CFLAGS) -c $< -o $@
 
 $(NAME):	$(OBJS)
-			@echo "$(WHT)Compiling REFERENCE...$(EOC)"
-			@$(CC) $(OBJS) -o $@
-			@echo "$(GREEN)REFERENCE build completed.$(EOC)"
+			@$(ECHO) $(NAME) created! $(EOC)
+			@$(CC) $(OBJS) $(CFLAGS) -o $@
 
 clean:
-			@echo "$(WHT)Removing .o files...$(EOC)"
-			@rm -f $(OBJS)
-			@echo "$(GREEN)Clean done.$(EOC)"
+			@rm -rf $(OBJS)
+			@$(PRINT) $(ITALIC_MAGENTA)"Objects deleted"$(EOC)
 
 fclean:		clean
-			@echo "$(WHT)Removing object- and binary -files...$(EOC)"
 			@rm -f $(NAME)
-			@echo "$(GREEN)Fclean done.$(EOC)"
+			@$(PRINT) $(ITALIC_MAGENTA)$(NAME)" deleted"$(EOC)
 
 re:			fclean all
 
