@@ -6,11 +6,24 @@
 /*   By: harndt <harndt@student.42sp.org.br>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/10 21:36:51 by harndt            #+#    #+#             */
-/*   Updated: 2023/07/12 15:20:45 by harndt           ###   ########.fr       */
+/*   Updated: 2023/07/13 17:00:52 by harndt           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #pragma once
+
+/*What is a Template?
+
+A template is a simple yet very powerful tool in C++. The simple idea is to pass
+the data type as a parameter so that we don’t need to write the same code for 
+different data types. For example, a software company may need to sort() for 
+different data types. Rather than writing and maintaining multiple codes, we 
+can write one sort() and pass the datatype as a parameter.
+
+https://www.geeksforgeeks.org/templates-cpp/
+https://www.codeproject.com/Articles/257589/An-Idiots-Guide-to-Cplusplus-Templates-Part-1
+https://www.youtube.com/watch?v=I-hZkUa9mIs&t=456s&pp=ygUMYysrIHRlbXBsYXRl
+*/
 
 // =============================================================================
 // Includes
