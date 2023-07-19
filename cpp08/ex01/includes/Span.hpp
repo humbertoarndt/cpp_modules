@@ -6,7 +6,7 @@
 /*   By: harndt <harndt@student.42sp.org.br>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/18 19:08:26 by harndt            #+#    #+#             */
-/*   Updated: 2023/07/18 20:36:51 by harndt           ###   ########.fr       */
+/*   Updated: 2023/07/19 12:12:24 by harndt           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,10 +16,10 @@
 // Includes
 // =============================================================================
 
-#include <iostream>	//std::cout, std::cerr, std::endl
-#include <algorithm>
-#include <vector>
-#include <list>
+#include <iostream>		//std::cout, std::cerr, std::endl
+#include <algorithm>	//std::sort
+#include <vector>		//std::vector<int>, push_back(), begin(), end(), 
+						//front(), back()
 
 // =============================================================================
 // Macros

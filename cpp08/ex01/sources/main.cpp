@@ -6,7 +6,7 @@
 /*   By: harndt <harndt@student.42sp.org.br>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/18 19:16:16 by harndt            #+#    #+#             */
-/*   Updated: 2023/07/18 20:43:36 by harndt           ###   ########.fr       */
+/*   Updated: 2023/07/19 12:16:37 by harndt           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 void	testSubject(void)
 {
+	LOG("Subject test");
 	Span sp = Span(5);
 
 	sp.addNumber(6);
@@ -29,15 +30,5 @@ void	testSubject(void)
 int	main(void)
 {
 	testSubject();
-	// Span	sp1(1);
-
-	// sp1.addNumber(8);
-	// LOG(sp1);
-	// sp1.addNumber(12);
-	// LOG(sp1);
-	// sp1.addNumber(88);
-	// LOG(sp1);
-	// sp1.addNumber(0);
-	// LOG(sp1);
 	return (0);
 }
