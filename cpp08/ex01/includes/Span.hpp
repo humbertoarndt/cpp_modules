@@ -6,7 +6,7 @@
 /*   By: harndt <harndt@student.42sp.org.br>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/18 19:08:26 by harndt            #+#    #+#             */
-/*   Updated: 2023/07/19 12:12:24 by harndt           ###   ########.fr       */
+/*   Updated: 2023/07/19 17:41:15 by harndt           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,9 +25,13 @@
 // Macros
 // =============================================================================
 
-#define LOG(x) std::cout << x << std::endl;
-#define ERROR(x) std::cerr << x << std::endl;
+#define LOG(x) std::cout << x << RESET_COLOR << std::endl;
+#define ERROR(x) std::cerr << x << RESET_COLOR << std::endl;
 typedef std::vector<int>	intv;
+#define RESET_COLOR	"\033[0m"
+#define MAGENTA		"\033[0;35m"
+#define YELLOW		"\033[0;33m"
+#define CYAN		"\033[0;36m"
 
 // =============================================================================
 // Class

@@ -6,7 +6,7 @@
 /*   By: harndt <harndt@student.42sp.org.br>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/18 19:13:18 by harndt            #+#    #+#             */
-/*   Updated: 2023/07/19 17:33:01 by harndt           ###   ########.fr       */
+/*   Updated: 2023/07/19 17:44:18 by harndt           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@
  */
 const char	*Span::RangeFullException::what(void) const throw()
 {
-	return ("Range is full");
+	return ("Range is full.");
 }
 
 /**

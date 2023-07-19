@@ -6,7 +6,7 @@
 /*   By: harndt <harndt@student.42sp.org.br>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/18 19:16:16 by harndt            #+#    #+#             */
-/*   Updated: 2023/07/19 17:36:57 by harndt           ###   ########.fr       */
+/*   Updated: 2023/07/19 17:43:40 by harndt           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
  */
 void	testSubject(void)
 {
-	LOG("> Subject test");
+	LOG(YELLOW << "> Subject test >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>");
 	Span sp = Span(5);
 
 	sp.addNumber(6);
@@ -38,7 +38,7 @@ void	testSubject(void)
  */
 void	testException(void)
 {
-	LOG("\n> Exception test");
+	LOG(YELLOW << "\n> Exception test >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>");
 	Span	sp(1);
 
 	try {sp.shortestSpan();}
@@ -59,11 +59,10 @@ void	testException(void)
  */
 void	test10000(void)
 {
-	LOG("\n> 10000 test");
+	LOG(YELLOW << "\n> 10000 test >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>");
 	Span	sp(10000);
 	intv	zeroes(10000, 0);
 	
-	LOG(sp);
 	try 
 	{
 		sp.addNumber(zeroes.begin(), zeroes.end());
