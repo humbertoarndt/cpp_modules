@@ -48,10 +48,11 @@ class Span
 		Span &operator = (Span const &rhs);
 
 		/* Member Functions */
-		void				addNumber(int n);
-		unsigned int		longestSpan(void);
-		unsigned int		shortestSpan(void);
-		intv const			&getRange(void) const;
+		void			addNumber(int n);
+		void			addNumber(intv::iterator begin, intv::iterator end);
+		unsigned int	longestSpan(void);
+		unsigned int	shortestSpan(void);
+		intv const		&getRange(void) const;
 		
 		/* Exceptions */
 		class RangeFullException : public std::exception

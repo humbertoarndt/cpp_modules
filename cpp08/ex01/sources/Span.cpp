@@ -6,7 +6,7 @@
 /*   By: harndt <harndt@student.42sp.org.br>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/18 19:13:18 by harndt            #+#    #+#             */
-/*   Updated: 2023/07/19 11:46:35 by harndt           ###   ########.fr       */
+/*   Updated: 2023/07/19 17:33:01 by harndt           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -158,7 +158,7 @@ intv const	&Span::getRange(void) const
 // =============================================================================
 
 /**
- * @brief Adds a single number to the Span. any attempt to add a new element if
+ * @brief Adds a single number to the Span. Any attempt to add a new element if
  * there are already N elements stored should throw an exception.
  * 
  * @param n The new element to add.
@@ -169,6 +169,24 @@ void	Span::addNumber(int n)
 		throw (Span::RangeFullException());
 	this->_range.push_back(n);
 	return ;
+}
+
+/**
+ * @brief Adds a sequence of elements to the Span. Any attempt to add a new 
+ * element if there are already N elements stored should throw an exception.
+ * 
+ * @param begin The new element to add.
+ * @param end The new element to add.
+ */
+void	Span::addNumber(intv::iterator begin, intv::iterator end)
+{
+	while (begin != end)
+	{
+		if (this->_range.size() == this->N)
+			throw (Span::RangeFullException());
+		this->_range.push_back(*begin);
+		begin++;
+	}
 }
 
 /**
