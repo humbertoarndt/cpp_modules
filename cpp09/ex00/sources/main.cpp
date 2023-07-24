@@ -6,7 +6,7 @@
 /*   By: harndt <harndt@student.42sp.org.br>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/20 13:13:01 by harndt            #+#    #+#             */
-/*   Updated: 2023/07/20 13:32:09 by harndt           ###   ########.fr       */
+/*   Updated: 2023/07/24 13:22:38 by harndt           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,10 +29,26 @@ bool	checkArgs(int argc)
 	return (true);
 }
 
+std::fstream	*openFile(char *filename)
+{
+	std::string	path = filename;
+	std::fstream	*fs = new std::fstream();
+	fs->open(filename, std::fstream::in);
+	if (fs->fail())
+	{
+		delete fs;
+	}
+	return (fs);
+}
+
 int	main(int argc, char **argv)
 {
 	if (!checkArgs(argc))
 		return (1);
-	LOG(argv[1]);
+	std::fstream	*fs = openFile(argv[1]);
+	std::cout << fs << std::endl;
+	
+	BitcoinExchange::readData();
+	BitcoinExchange::printMap();
 	return (0);
 }

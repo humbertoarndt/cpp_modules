@@ -6,13 +6,14 @@
 /*   By: harndt <harndt@student.42sp.org.br>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/20 13:06:39 by harndt            #+#    #+#             */
-/*   Updated: 2023/07/20 13:10:44 by harndt           ###   ########.fr       */
+/*   Updated: 2023/07/24 13:28:58 by harndt           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "BitcoinExchange.hpp"
 
 #define SHOW_MSG true
+std::map<std::string, double>	BitcoinExchange::_map;
 
 // =============================================================================
 // Constructors and Destructor
@@ -67,7 +68,48 @@ BitcoinExchange &BitcoinExchange::operator = (BitcoinExchange const &rhs)
 {
 	if (SHOW_MSG == true)
 		LOG("Assignment Operator Called.");
-	if (this != &rhs)
-		*this = rhs;
+	(void)rhs;
 	return (*this);
+}
+
+// =============================================================================
+// Member Functions
+// =============================================================================
+
+/**
+ * @brief Reads and stores the values from 'data.csv' file in 
+ * 'BitcoinExchange::_map'
+ * 
+ */
+void	BitcoinExchange::readData(void)
+{
+	std::ifstream	data("./data/data.csv");
+	std::string		row;
+	
+	if (!data.is_open())
+		return ;
+	std::getline(data, row);
+	while (std::getline(data, row))
+	{
+		std::istringstream	iss(row);
+		std::string			date;
+		std::string			valueStr;
+
+		if (!std::getline(iss, date, ',') || !std::getline(iss, valueStr))
+			continue ;
+		double	value = atof(valueStr.c_str());
+		BitcoinExchange::_map.insert(std::pair <std::string, double> (date, value));
+	}
+}
+
+/**
+ * @brief Prints all Keys and Values stored in BitcoinExchange::_map.
+ * 
+ */
+void	BitcoinExchange::printMap(void)
+{
+	std::map<std::string, double>::iterator	it = BitcoinExchange::_map.begin();
+
+	for (; it != BitcoinExchange::_map.end(); it++)
+		LOG("Key: " << it->first << ", Value: " << it->second);
 }
