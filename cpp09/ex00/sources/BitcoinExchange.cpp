@@ -6,7 +6,7 @@
 /*   By: harndt <harndt@student.42sp.org.br>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/20 13:06:39 by harndt            #+#    #+#             */
-/*   Updated: 2023/07/25 12:12:41 by harndt           ###   ########.fr       */
+/*   Updated: 2023/07/25 12:21:04 by harndt           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -143,14 +143,13 @@ static bool	checkValue(std::string value)
 		{
 			i++;
 		}
-			
 		if (!std::isdigit(value[i]) && value[i] != '.')
 		{
 			ERROR(">Error: not a number.");
 			return (false);
 		}
 	}
-	
+
 	/* Size check */
 	std::istringstream(value) >> nb;
 	if (nb > 1000)
@@ -213,7 +212,7 @@ void	BitcoinExchange::readData(void)
 {
 	std::ifstream	data("./data/data.csv");
 	std::string		row;
-	
+
 	if (!data.is_open())
 		throw BitcoinExchange::InvalidFileException();
 	std::getline(data, row);
@@ -282,8 +281,6 @@ void	BitcoinExchange::executeExchange(char *filename)
 		dValue = atof(value.c_str());
 		closestValue = findLower(date);
 		LOG(date << " => " << dValue << " = " << closestValue * dValue);
-		
-		
 	}
 	
 }

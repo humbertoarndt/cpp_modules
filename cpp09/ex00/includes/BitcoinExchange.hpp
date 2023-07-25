@@ -6,7 +6,7 @@
 /*   By: harndt <harndt@student.42sp.org.br>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/20 12:25:22 by harndt            #+#    #+#             */
-/*   Updated: 2023/07/25 12:12:51 by harndt           ###   ########.fr       */
+/*   Updated: 2023/07/25 12:22:28 by harndt           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,10 +18,10 @@
 
 #include <fstream>	// std::fstream, open()
 #include <iostream>	// std::cout(), std::cerr()
-#include <map>		// std::map<,>
+#include <map>		// std::map<type, type>
 #include <sstream>	// std::istringstream
 #include <stdlib.h>	// atof()
-#include <string>	// c_str()
+#include <string>	// c_str(), substr(), length(), find()
 
 // =============================================================================
 // Macros
