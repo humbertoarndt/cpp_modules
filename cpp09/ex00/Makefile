@@ -6,7 +6,7 @@
 #    By: harndt <harndt@student.42sp.org.br>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/07/18 19:06:36 by harndt            #+#    #+#              #
-#    Updated: 2023/07/24 13:09:46 by harndt           ###   ########.fr        #
+#    Updated: 2023/07/25 12:17:53 by harndt           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -72,4 +72,10 @@ fclean:		clean
 
 re:			fclean all
 
-.PHONY:		all clean fclean re
+run:		all
+			./$(NAME) input.txt
+
+vg:			all
+			valgrind ./$(NAME) input.txt
+
+.PHONY:		all clean fclean re run vg

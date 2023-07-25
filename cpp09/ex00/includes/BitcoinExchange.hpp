@@ -6,7 +6,7 @@
 /*   By: harndt <harndt@student.42sp.org.br>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/20 12:25:22 by harndt            #+#    #+#             */
-/*   Updated: 2023/07/24 13:45:30 by harndt           ###   ########.fr       */
+/*   Updated: 2023/07/25 12:12:51 by harndt           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,7 @@ class BitcoinExchange
 	private:
 		static std::map<std::string, double>	_map;
 
+		/* Orthodox Canonical Form methods */
 		BitcoinExchange(void);
 		BitcoinExchange(BitcoinExchange const &src);
 		BitcoinExchange &operator = (BitcoinExchange const &rhs);
@@ -47,4 +48,13 @@ class BitcoinExchange
 	public:
 		static void	readData(void);
 		static void	printMap(void);
+		static void	executeExchange(char *filename);
+		static double	findLower(const std::string &date);
+
+		/* Exceptions */
+		class InvalidFileException : public std::exception
+		{
+			public:
+				virtual const char *what() const throw();
+		};
 };

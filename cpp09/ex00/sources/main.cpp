@@ -6,7 +6,7 @@
 /*   By: harndt <harndt@student.42sp.org.br>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/20 13:13:01 by harndt            #+#    #+#             */
-/*   Updated: 2023/07/24 13:45:28 by harndt           ###   ########.fr       */
+/*   Updated: 2023/07/25 10:57:04 by harndt           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,27 +28,16 @@ bool	checkArgs(int argc)
 	}
 	return (true);
 }
-
-std::fstream	*openFile(char *filename)
-{
-	std::string	path = filename;
-	std::fstream	*fs = new std::fstream();
-	fs->open(filename, std::fstream::in);
-	if (fs->fail())
-	{
-		delete fs;
-	}
-	return (fs);
-}
-
 int	main(int argc, char **argv)
 {
 	if (!checkArgs(argc))
 		return (1);
-	std::fstream	*fs = openFile(argv[1]);
-	std::cout << fs << std::endl;
-	
-	BitcoinExchange::readData();
-	BitcoinExchange::printMap();
+	try
+	{	
+		BitcoinExchange::readData();
+		// BitcoinExchange::printMap();
+		BitcoinExchange::executeExchange(argv[1]);
+	}
+	catch (BitcoinExchange::InvalidFileException &e) {ERROR(e.what());}
 	return (0);
 }
