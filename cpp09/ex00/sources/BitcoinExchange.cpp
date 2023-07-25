@@ -6,7 +6,7 @@
 /*   By: harndt <harndt@student.42sp.org.br>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/20 13:06:39 by harndt            #+#    #+#             */
-/*   Updated: 2023/07/25 12:21:04 by harndt           ###   ########.fr       */
+/*   Updated: 2023/07/25 12:25:37 by harndt           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -262,7 +262,7 @@ void	BitcoinExchange::executeExchange(char *filename)
 		ERROR(">Error: bad input => " << row);
 		return ;
 	}
-	
+
 	while (std::getline(fs, row))
 	{
 		std::string	date;
@@ -277,10 +277,9 @@ void	BitcoinExchange::executeExchange(char *filename)
 			ERROR(">Error: bad input => " << row);
 				continue ;
 		}
-		
+
 		dValue = atof(value.c_str());
 		closestValue = findLower(date);
 		LOG(date << " => " << dValue << " = " << closestValue * dValue);
 	}
-	
 }
