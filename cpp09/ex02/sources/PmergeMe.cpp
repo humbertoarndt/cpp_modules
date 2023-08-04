@@ -6,7 +6,7 @@
 /*   By: harndt <harndt@student.42sp.org.br>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/27 20:25:20 by harndt            #+#    #+#             */
-/*   Updated: 2023/08/01 11:49:22 by harndt           ###   ########.fr       */
+/*   Updated: 2023/08/03 21:06:07 by harndt           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,11 +78,27 @@ PmergeMe::PmergeMe(int size, char **elements)
 	}
 
 	/* Vector */
+	gettimeofday(&_vectorStart, NULL);
 	initVector(size, elements);
-	printVector();
 	checkDuplicate();
 	getPairs();
 	sortPairs();
+	sortPairsVector();
+	fillVector();
+	fillSortedVector();
+	gettimeofday(&_vectorEnd, NULL);
+
+	/* Dequeu */
+	gettimeofday(&_dequeStart, NULL);
+	initDeque(size, elements);
+	getPairsDeque();
+	sortPairsDeque();
+	sortPairsDequeLargest();
+	fillDeque();
+	fillSortedDeque();
+	gettimeofday(&_dequeEnd, NULL);
+	
+	showLog();
 }
 
 /**
@@ -146,10 +162,23 @@ void	PmergeMe::printVector(void)
 	std::vector<int>::iterator	it = _vector.begin();
 	std::vector<int>::iterator	end = _vector.end() - 1;
 
+	LOG("Before:");
 	std::cout << "[";
 	for (; it != end; it++)
 		std::cout << *it << ", ";
 	LOG(_vector.back() << "]");
+}
+
+void	PmergeMe::printSortedVector(void)
+{
+	std::vector<int>::iterator	it = _sortedVector.begin();
+	std::vector<int>::iterator	end = _sortedVector.end() - 1;
+
+	LOG("After:");
+	std::cout << "[";
+	for (; it != end; it++)
+		std::cout << *it << ", ";
+	LOG(_sortedVector.back() << "]");
 }
 
 /**
@@ -169,23 +198,23 @@ void	PmergeMe::checkDuplicate(void)
  * @brief Breakes '_vector' in small pairs vectors.
  * 
  */
-void	PmergeMe::getPairs(void)
+void	PmergeMe::getPairs(void) // ok
 {
+	int					pair;
 	std::vector<int>	*temp;
-	int					check;
 
-	check = 1;
+	pair = 1;
 	temp = new std::vector<int>;
 	for (std::vector<int>::iterator it = _vector.begin(); it != _vector.end(); it++)
 	{
 		temp->push_back(*it);
-		if (check % 2 == 0)
+		if (pair % 2 == 0)
 		{
 			_vectorPairs.push_back(*temp);
 			delete temp;
 			temp = new std::vector<int>;
 		}
-		check++;
+		pair++;
 	}
 
 	if (temp->size() == 1)
@@ -200,8 +229,154 @@ void	PmergeMe::getPairs(void)
  * @brief Sort the pairs from '_vector'.
  * 
  */
-void	PmergeMe::sortPairs(void)
+void	PmergeMe::sortPairs(void) //ok
 {
 	for (size_t i = 0; i < _vectorPairs.size(); i++)
 		std::sort(_vectorPairs[i].begin(), _vectorPairs[i].end());
+}
+
+void	PmergeMe::sortPairsVector(void)
+{
+	for (size_t i = 0; i < _vectorPairs.size() - 1; i++)
+		for (size_t j = i + 1; j < _vectorPairs.size(); j++)
+			if (_vectorPairs[i][1] > _vectorPairs[j][1])
+				_vectorPairs[i].swap(_vectorPairs[j]);
+}
+
+void	PmergeMe::fillVector(void)
+{
+	for (size_t i = 0; i < _vectorPairs.size(); i++)
+	{
+		_auxVector.push_back(_vectorPairs[i][0]);
+		_sortedVector.push_back(_vectorPairs[i][1]);
+	}
+}
+
+void	PmergeMe::fillSortedVector(void)
+{
+	for (std::vector<int>::iterator	aux_it = _auxVector.begin(); aux_it < _auxVector.end(); aux_it++)
+	{
+		for (std::vector<int>::iterator	sorted_it = _sortedVector.begin(); sorted_it <= _sortedVector.end(); sorted_it++)
+		{
+			if (*aux_it < *sorted_it)
+			{
+				_sortedVector.insert(sorted_it, *aux_it);
+				break ;
+			}
+			else if (sorted_it == _sortedVector.end())
+				_sortedVector.push_back(*aux_it);
+		}
+	}
+	if (_sortedVector[0] < 0)
+	{
+		LOG("entrei");
+		_sortedVector.erase(_sortedVector.begin());
+	}
+}
+
+// =============================================================================
+// Deque Member Functions
+// =============================================================================
+
+void	PmergeMe::initDeque(int size ,char** elements)
+{
+	int	cur_value;
+
+	for (int i = 0; i < (size - 1); i++)
+	{
+		cur_value = std::strtol(elements[i + 1], NULL, 10);
+		if (cur_value < 0 || cur_value > INT_MAX)
+			throw PmergeMe::BadInputException();
+		_deque.push_back(cur_value);
+	}
+}
+
+void	PmergeMe::getPairsDeque(void)
+{
+	int					pair;
+	std::deque<int>		*temp;
+
+	pair = 1;
+	temp = new std::deque<int>;
+	for (std::deque<int>::iterator it = _deque.begin(); it != _deque.end(); it++)
+	{
+		temp->push_back(*it);
+		if (pair % 2 == 0)
+		{
+			_dequePairs.push_back(*temp);
+			delete temp;
+			temp = new std::deque<int>;
+		}
+		pair++;
+	}
+
+	if (temp->size() == 1)
+	{
+		temp->push_back(-1);
+		_dequePairs.push_back(*temp);
+	}
+	delete temp;
+}
+
+void	PmergeMe::sortPairsDeque(void)
+{
+	for (size_t i = 0; i < _dequePairs.size(); i++)
+		std::sort(_dequePairs[i].begin(), _dequePairs[i].end());
+}
+
+void	PmergeMe::sortPairsDequeLargest(void)
+{
+	for (size_t i = 0; i < _dequePairs.size() - 1; i++)
+		for (size_t j = i + 1; j < _dequePairs.size(); j++)
+			if (_dequePairs[i][1] > _dequePairs[j][1])
+				_dequePairs[i].swap(_dequePairs[j]);
+}
+
+void	PmergeMe::fillDeque(void)
+{
+	for (size_t i = 0; i < _dequePairs.size(); i++)
+	{
+		_auxDeque.push_back(_dequePairs[i][0]);
+		_sortedDeque.push_back(_dequePairs[i][1]);
+	}
+}
+
+void	PmergeMe::fillSortedDeque(void)
+{
+	for (std::deque<int>::iterator	aux_it = _auxDeque.begin(); aux_it < _auxDeque.end(); aux_it++)
+	{
+		for (std::deque<int>::iterator	sorted_it = _sortedDeque.begin(); sorted_it <= _sortedDeque.end(); sorted_it++)
+		{
+			if (*aux_it < *sorted_it)
+			{
+				_sortedDeque.insert(sorted_it, *aux_it);
+				break ;
+			}
+			else if (sorted_it == _sortedDeque.end())
+				_sortedDeque.push_back(*aux_it);
+		}
+	}
+	if (_sortedDeque[0] < 0)
+		_sortedDeque.erase(_sortedDeque.begin());
+}
+
+// =============================================================================
+// Member Functions
+// =============================================================================
+
+void	PmergeMe::showLog(void)
+{
+	double	vClock;
+	vClock = (_vectorEnd.tv_sec - _vectorStart.tv_sec) * (double)1000000;
+	vClock = (vClock + (_vectorEnd.tv_usec - _vectorStart.tv_usec));
+	
+	double	dClock;
+	dClock = (_dequeEnd.tv_sec - _dequeStart.tv_sec) * (double)1000000;
+	dClock = (dClock + (_dequeEnd.tv_usec - _dequeStart.tv_usec));
+
+	printVector();
+	printSortedVector();
+
+	LOG("Time to process a range of " << std::fixed << std::setprecision(6) << _vector.size() << " elements with std::vector => " << vClock << " us");
+	LOG("Time to process a range of " << std::fixed << std::setprecision(6) <<  _deque.size() << " elements with std::dequeu => " << dClock << " us");
 }

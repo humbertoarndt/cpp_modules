@@ -6,7 +6,7 @@
 /*   By: harndt <harndt@student.42sp.org.br>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/27 20:21:14 by harndt            #+#    #+#             */
-/*   Updated: 2023/08/01 11:45:24 by harndt           ###   ########.fr       */
+/*   Updated: 2023/08/03 21:03:24 by harndt           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,9 +20,10 @@
 #include <climits>		//	INT_MAX
 #include <cstdlib>		//	std::strtol
 #include <deque>		//	std::deque<int>
+#include <iomanip>		//	std::setprecision
 #include <iostream>		//	std::cout, std::cerr
+#include <sys/time.h>	//	timeval
 #include <vector>		//	std::vector<int>
-// #include <iomanip>
 
 // =============================================================================
 // Macros
@@ -41,6 +42,18 @@ class PmergeMe
 		/* Vector Attributes */
 		std::vector<int>				_vector;
 		std::vector<std::vector<int> >	_vectorPairs;
+		std::vector<int>				_auxVector;
+		std::vector<int>				_sortedVector;
+		struct timeval					_vectorStart;
+		struct timeval					_vectorEnd;
+
+		/* Dequeu Attributes */
+		std::deque<int>					_deque;
+		std::deque<std::deque<int> >	_dequePairs;
+		std::deque<int>					_auxDeque;
+		std::deque<int>					_sortedDeque;
+		struct timeval					_dequeStart;
+		struct timeval					_dequeEnd;
 	
 	public:
 		/* Orthodox Canonical Form methods */
@@ -53,9 +66,23 @@ class PmergeMe
 		/* Vector Member Functions */
 		void	initVector(int size, char **elements);
 		void	printVector(void);
+		void	printSortedVector(void);
 		void	checkDuplicate(void);
 		void	getPairs(void);
 		void	sortPairs(void);
+		void	sortPairsVector(void);
+		void	fillVector(void);
+		void	fillSortedVector(void);
+
+		/* Vector Member Functions */
+		void	initDeque(int size, char **elements);
+		void	getPairsDeque(void);
+		void	sortPairsDeque(void);
+		void	sortPairsDequeLargest(void);
+		void	fillDeque(void);
+		void	fillSortedDeque(void);
+
+		void	showLog(void);
 
 		/* Exceptions */
 		class BadInputException : public std::exception
