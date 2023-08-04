@@ -6,7 +6,7 @@
 #    By: harndt <harndt@student.42sp.org.br>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/07/27 20:19:55 by harndt            #+#    #+#              #
-#    Updated: 2023/08/01 10:42:12 by harndt           ###   ########.fr        #
+#    Updated: 2023/08/04 14:47:14 by harndt           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -73,9 +73,12 @@ fclean:		clean
 re:			fclean all
 
 run:		all
-			./$(NAME) input.txt
+			./$(NAME) `shuf -i 1-42 | tr "\n" " "`
+
+shuffle:	re
+			./$(NAME) `shuf -i 1-100000 -n 3000 | tr "\n" " "`
 
 vg:			all
-			valgrind ./$(NAME) "8 9 * 9 - 9 - 9 - 4 - 1 +"
+			valgrind ./$(NAME) 3 5 9 7 4
 
 .PHONY:		all clean fclean re run vg

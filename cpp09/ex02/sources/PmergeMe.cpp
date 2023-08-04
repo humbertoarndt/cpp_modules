@@ -6,7 +6,7 @@
 /*   By: harndt <harndt@student.42sp.org.br>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/27 20:25:20 by harndt            #+#    #+#             */
-/*   Updated: 2023/08/03 21:06:07 by harndt           ###   ########.fr       */
+/*   Updated: 2023/08/04 14:52:11 by harndt           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,22 +65,16 @@ PmergeMe::PmergeMe(PmergeMe const &src)
 PmergeMe::PmergeMe(int size, char **elements)
 {
 	if (SHOW_MSG == true)
-		LOG("PmergeMe Parameter constructor called.")
-	if (size < 2)
-		throw PmergeMe::BadInputException();
-	for (int i = 1; i < size; i++)
-	{
-		for (int j = 0; elements[i][j] != '\0'; j++)
-		{
-			if (!std::isdigit(elements[i][j]))
-				throw PmergeMe::BadInputException();
-		}
-	}
+		LOG("PmergeMe Parameter constructor called.");
+	
+	/* Validate Elements */
+	checkSize(size);
+	checkInput(size, elements);
+	// checkDuplicates(size, elements);
 
 	/* Vector */
 	gettimeofday(&_vectorStart, NULL);
 	initVector(size, elements);
-	checkDuplicate();
 	getPairs();
 	sortPairs();
 	sortPairsVector();
@@ -88,7 +82,7 @@ PmergeMe::PmergeMe(int size, char **elements)
 	fillSortedVector();
 	gettimeofday(&_vectorEnd, NULL);
 
-	/* Dequeu */
+	/* Deque */
 	gettimeofday(&_dequeStart, NULL);
 	initDeque(size, elements);
 	getPairsDeque();
@@ -97,7 +91,8 @@ PmergeMe::PmergeMe(int size, char **elements)
 	fillDeque();
 	fillSortedDeque();
 	gettimeofday(&_dequeEnd, NULL);
-	
+
+	/* Show Log */
 	showLog();
 }
 
@@ -162,36 +157,25 @@ void	PmergeMe::printVector(void)
 	std::vector<int>::iterator	it = _vector.begin();
 	std::vector<int>::iterator	end = _vector.end() - 1;
 
-	LOG("Before:");
-	std::cout << "[";
+	std::cout << "Vector\t[";
 	for (; it != end; it++)
 		std::cout << *it << ", ";
 	LOG(_vector.back() << "]");
 }
 
+/**
+ * @brief Prints '_sortedVector'.
+ * 
+ */
 void	PmergeMe::printSortedVector(void)
 {
 	std::vector<int>::iterator	it = _sortedVector.begin();
 	std::vector<int>::iterator	end = _sortedVector.end() - 1;
 
-	LOG("After:");
-	std::cout << "[";
+	std::cout << "Vector\t[";
 	for (; it != end; it++)
 		std::cout << *it << ", ";
 	LOG(_sortedVector.back() << "]");
-}
-
-/**
- * @brief Looks for duplicates in '_vector'.
- * 
- */
-void	PmergeMe::checkDuplicate(void)
-{
-	for (std::size_t i = 0; i < _vector.size(); i++)
-		for (std::size_t j = i + 1; j < _vector.size(); j++)
-			if (_vector[i] == _vector[j])
-				throw PmergeMe::BadInputException();
-	return ;
 }
 
 /**
@@ -235,6 +219,10 @@ void	PmergeMe::sortPairs(void) //ok
 		std::sort(_vectorPairs[i].begin(), _vectorPairs[i].end());
 }
 
+/**
+ * @brief Sort a vector of pairs.
+ * 
+ */
 void	PmergeMe::sortPairsVector(void)
 {
 	for (size_t i = 0; i < _vectorPairs.size() - 1; i++)
@@ -243,6 +231,10 @@ void	PmergeMe::sortPairsVector(void)
 				_vectorPairs[i].swap(_vectorPairs[j]);
 }
 
+/**
+ * @brief Fill '_sortedVector'.
+ * 
+ */
 void	PmergeMe::fillVector(void)
 {
 	for (size_t i = 0; i < _vectorPairs.size(); i++)
@@ -252,6 +244,10 @@ void	PmergeMe::fillVector(void)
 	}
 }
 
+/**
+ * @brief Fills and sorts '_sortedVector'.
+ * 
+ */
 void	PmergeMe::fillSortedVector(void)
 {
 	for (std::vector<int>::iterator	aux_it = _auxVector.begin(); aux_it < _auxVector.end(); aux_it++)
@@ -278,6 +274,12 @@ void	PmergeMe::fillSortedVector(void)
 // Deque Member Functions
 // =============================================================================
 
+/**
+ * @brief Initates '_deque' with the values received by command line.
+ * 
+ * @param size Number of elements received by command line.
+ * @param elements Elements received by command line.
+ */
 void	PmergeMe::initDeque(int size ,char** elements)
 {
 	int	cur_value;
@@ -291,6 +293,40 @@ void	PmergeMe::initDeque(int size ,char** elements)
 	}
 }
 
+/**
+ * @brief Prints '_deque'.
+ * 
+ */
+void	PmergeMe::printDeque(void)
+{
+	std::deque<int>::iterator	it = _deque.begin();
+	std::deque<int>::iterator	end = _deque.end() - 1;
+
+	std::cout << "Deque\t[";
+	for (; it != end; it++)
+		std::cout << *it << ", ";
+	LOG(_deque.back() << "]");
+}
+
+/**
+ * @brief Prints '_sortedDeque'.
+ * 
+ */
+void	PmergeMe::printSortedDeque(void)
+{
+	std::deque<int>::iterator	it = _sortedDeque.begin();
+	std::deque<int>::iterator	end = _sortedDeque.end() - 1;
+
+	std::cout << "Deque\t[";
+	for (; it != end; it++)
+		std::cout << *it << ", ";
+	LOG(_sortedDeque.back() << "]");
+}
+
+/**
+ * @brief Breakes '_deque' in small pairs deque.
+ * 
+ */
 void	PmergeMe::getPairsDeque(void)
 {
 	int					pair;
@@ -318,12 +354,20 @@ void	PmergeMe::getPairsDeque(void)
 	delete temp;
 }
 
+/**
+ * @brief Sort the pairs from '_deque'.
+ * 
+ */
 void	PmergeMe::sortPairsDeque(void)
 {
 	for (size_t i = 0; i < _dequePairs.size(); i++)
 		std::sort(_dequePairs[i].begin(), _dequePairs[i].end());
 }
 
+/**
+ * @brief Sort a deque of pairs.
+ * 
+ */
 void	PmergeMe::sortPairsDequeLargest(void)
 {
 	for (size_t i = 0; i < _dequePairs.size() - 1; i++)
@@ -332,6 +376,10 @@ void	PmergeMe::sortPairsDequeLargest(void)
 				_dequePairs[i].swap(_dequePairs[j]);
 }
 
+/**
+ * @brief Fill '_sortedDeque'.
+ * 
+ */
 void	PmergeMe::fillDeque(void)
 {
 	for (size_t i = 0; i < _dequePairs.size(); i++)
@@ -341,6 +389,10 @@ void	PmergeMe::fillDeque(void)
 	}
 }
 
+/**
+ * @brief Fills and sorts '_sortedDeque'.
+ * 
+ */
 void	PmergeMe::fillSortedDeque(void)
 {
 	for (std::deque<int>::iterator	aux_it = _auxDeque.begin(); aux_it < _auxDeque.end(); aux_it++)
@@ -364,6 +416,50 @@ void	PmergeMe::fillSortedDeque(void)
 // Member Functions
 // =============================================================================
 
+/**
+ * @brief Checks the size of the received input.
+ * 
+ * @param size 
+ */
+void	PmergeMe::checkSize(int size)
+{
+	if (size < 2)
+		throw PmergeMe::BadInputException();
+}
+
+/**
+ * @brief Checks if the receive elements are only digits.
+ * 
+ * @param size The total number of elements receveid.
+ * @param elements The received elements.
+ */
+void	PmergeMe::checkInput(int size, char **elements)
+{
+	for (int i = 1; i < size; i++)
+		for (int j = 0; elements[i][j] != '\0'; j++)
+			if (!std::isdigit(elements[i][j]))
+				throw PmergeMe::BadInputException();
+}
+
+/**
+ * @brief Checks if the receive elements contains a duplicate.
+ * 
+ * @param size The total number of elements receveid.
+ * @param elements The received elements.
+ */
+void	PmergeMe::checkDuplicates(int size, char **elements)
+{
+	for (int i = 1; i < size; i++)
+		for (int j = i + 1; j < size; j++)
+			if (*elements[i] == *elements[j])
+				throw PmergeMe::BadInputException();
+}
+
+/**
+ * @brief Calculates the time to sort the vector and the deque, and prints
+ * a message on the terminal.
+ * 
+ */
 void	PmergeMe::showLog(void)
 {
 	double	vClock;
@@ -374,8 +470,13 @@ void	PmergeMe::showLog(void)
 	dClock = (_dequeEnd.tv_sec - _dequeStart.tv_sec) * (double)1000000;
 	dClock = (dClock + (_dequeEnd.tv_usec - _dequeStart.tv_usec));
 
+	LOG(MAGENTA << "Before:");
 	printVector();
+	printDeque();
+	
+	LOG(MAGENTA << "After:");
 	printSortedVector();
+	printSortedDeque();
 
 	LOG("Time to process a range of " << std::fixed << std::setprecision(6) << _vector.size() << " elements with std::vector => " << vClock << " us");
 	LOG("Time to process a range of " << std::fixed << std::setprecision(6) <<  _deque.size() << " elements with std::dequeu => " << dClock << " us");

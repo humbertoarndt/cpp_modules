@@ -6,7 +6,7 @@
 /*   By: harndt <harndt@student.42sp.org.br>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/27 20:21:14 by harndt            #+#    #+#             */
-/*   Updated: 2023/08/03 21:03:24 by harndt           ###   ########.fr       */
+/*   Updated: 2023/08/04 14:13:50 by harndt           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,8 +29,10 @@
 // Macros
 // =============================================================================
 
-#define LOG(x) std::cout << x << std::endl;
-#define ERROR(x) std::cerr << x << std::endl;
+#define LOG(x) std::cout << x << EOC << std::endl;
+#define ERROR(x) std::cerr << x << EOC << std::endl;
+#define EOC				"\e[0m"
+#define MAGENTA	"\e[1;35m"
 
 // =============================================================================
 // Class
@@ -67,7 +69,6 @@ class PmergeMe
 		void	initVector(int size, char **elements);
 		void	printVector(void);
 		void	printSortedVector(void);
-		void	checkDuplicate(void);
 		void	getPairs(void);
 		void	sortPairs(void);
 		void	sortPairsVector(void);
@@ -76,13 +77,19 @@ class PmergeMe
 
 		/* Vector Member Functions */
 		void	initDeque(int size, char **elements);
+		void	printDeque(void);
+		void	printSortedDeque(void);
 		void	getPairsDeque(void);
 		void	sortPairsDeque(void);
 		void	sortPairsDequeLargest(void);
 		void	fillDeque(void);
 		void	fillSortedDeque(void);
 
+		/* Member Functions */
 		void	showLog(void);
+		void	checkSize(int size);
+		void	checkInput(int size, char **elements);
+		void	checkDuplicates(int size, char **elements);
 
 		/* Exceptions */
 		class BadInputException : public std::exception
