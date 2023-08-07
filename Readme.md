@@ -1,24 +1,16 @@
 # CPP Piscine
 
-This project is all about learning **Object-Oriented Programming** in C. I'll try to organize in my readme files with what I learned in each list/exercise as an guide for myself and maybe some future cadets.
+This project is all about learning **Object-Oriented Programming** in C++, such as classes, inheritance, ad-hoc polymorphism, templates, containers and more.
 
-## CPP00
-
-### Basics of OOP
-### Constructor and Destructor
-
-## CPP01
-
-### Object Instances
-### Reference and Deference
-
-## CPP02
-
-### [Othodox Canonical Class Form](https://github.com/humbertoarndt/piscine_cpp/tree/master/cpp02#othodox-canonical-class-form)  
-### [Operator Overload](https://github.com/humbertoarndt/piscine_cpp/tree/master/cpp02#operator-overloading)  
-### Switch Case
-
-## CPP03
-
-### [Inheritance](https://github.com/humbertoarndt/piscine_cpp/tree/master/cpp03#iheritance)  
-### [Private x Protected Members](https://github.com/humbertoarndt/piscine_cpp/tree/master/cpp03#private-x-protected)  
+| Module | Subject | Grade |  Start | End |
+| :---: | :--- | :---: | :---: | :---: |
+| CPP00 | OOP Introduction | 85% | 02/04/2023 | 19/04/2023 |
+| CPP01 | Memory allocation, reference and pointers | 100% | 19/04/2023 | 29/04/2023 |
+| CPP02 | Ad-hoc polymorphism, overloads and orthodox canonical classes | 100% | 29/04/2023 | 03/05/2023 |
+| CPP03 | Inheritance | 100% | 08/05/2023 | 27/06/2023 |
+| CPP04 | Subtype polymorphism, abstract classes and interfaces | 80% | 28/06/2023 | 04/07/2023 |
+| CPP05 | Trye/Catch and Exceptions | 100% | 06/07/2023 | 10/07/2023 |
+| CPP06 | Casts | 100% | 11/07/2023 | 12/07/2023 |
+| CPP07 | Templates | 100% | 12/07/2023 | 13/07/2023 |
+| CPP08 | Templated containers, iterators and algorithms | 100% | 13/07/2023 | 20/07/2023 |
+| CPP09 | Containers | 100% | 21/07/2023 | 04/08/2023 |
