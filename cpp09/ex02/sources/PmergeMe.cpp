@@ -6,7 +6,7 @@
 /*   By: harndt <harndt@student.42sp.org.br>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/27 20:25:20 by harndt            #+#    #+#             */
-/*   Updated: 2023/08/04 14:52:11 by harndt           ###   ########.fr       */
+/*   Updated: 2023/08/07 15:27:28 by harndt           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -265,7 +265,6 @@ void	PmergeMe::fillSortedVector(void)
 	}
 	if (_sortedVector[0] < 0)
 	{
-		LOG("entrei");
 		_sortedVector.erase(_sortedVector.begin());
 	}
 }
